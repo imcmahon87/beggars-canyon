@@ -1,13 +1,68 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600&display=swap");
+
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1 {
+  font-size: 1.5em;
+  margin: 0;
+  font-family: 'Saira Condensed', sans-serif;
+}
+
+h2 {
+  font-size: 2em;
+  margin: 0;
+  font-family: 'Saira Condensed', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.wrapper {
+  background-image: url("assets/images/background-mobile.png");
+  background-position: center center;
+  background-size: 100vh auto;
+  height: 100vh;
+  width: 100%;
+  z-index: 0;
+}
+
+.header-mobile {
+  position: relative;
+  overflow: hidden;
+  padding: 0.4em 1em;
+  color: #E2E2E2;
+  text-align: left;
+  background-color: #1E1E1E;
+  width: 100%;
+  z-index: 999;
+}
+
+.header-mobile a:link, .header-mobile a:visited, .header-mobile a:hover, .header-mobile a:active {
+  display: block;
+  text-decoration: none;
+  color: #E2E2E2;
+}
+
+.header-mobile a {
+  color: #E2E2E2;
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 1.5em;
+}
+
+.menu-button-mobile {
+  display: block;
+  position: absolute;
+  right: 1.25em;
+  top: 1em;
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.menu-mobile {
+  display: none;
 }
