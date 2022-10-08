@@ -18,7 +18,7 @@ function Main() {
                 className="page-header"
             >
                 <div className="page-header">
-                    <h2>Upcoming Shows</h2>
+                    <h2>Landing Page</h2>
                 </div>
             </CSSTransition>
 
@@ -48,7 +48,7 @@ function Main() {
             </CSSTransition>
             <CSSTransition in={show}
                 timeout={1500}
-                classNames="slide-center"
+                classNames="slide-content"
                 unmountOnExit
                 className="content"
             >
