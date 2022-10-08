@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="wrapper">
       <div id="header-mobile">
-        <Link to="/">
+        <Link to="/" style={{ display: 'inline-block' }}>
           <h1>BEGGARS CANYON</h1>
         </Link>
         <div id="menu-mobile">
@@ -31,6 +31,39 @@ function App() {
         <img  id="menu-button-mobile"
               src={menuButton}
               onClick={mobileMenuPress} />
+      </div>
+      <div className="animation-left"></div>
+      <div className="animation-right"></div>
+      <div className="animation-center"></div>
+      <div className="content">
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        <p>Testing, this is a sentence</p>
+        
       </div>
     </div>
   );
