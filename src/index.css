@@ -32,7 +32,7 @@ body {
 }
 
 #header-mobile {
-  position: relative;
+  position: fixed;
   overflow: hidden;
   padding: 0.4em 1em;
   color: #E2E2E2;
@@ -72,5 +72,5 @@ body {
 }
 .slide-exit.slide-exit-active {
   transform: translate(0, 600px);
-  transition: opacity 250ms ease-out, transform 1500ms ease;
+  transition: transform 1000ms ease;
 }
