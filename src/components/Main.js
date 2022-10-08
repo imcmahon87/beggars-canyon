@@ -12,6 +12,17 @@ function Main() {
     return (
         <div>
             <CSSTransition in={show}
+                timeout={1000}
+                classNames="fade"
+                unmountOnExit
+                className="page-header"
+            >
+                <div className="page-header">
+                    <h2>Upcoming Shows</h2>
+                </div>
+            </CSSTransition>
+
+            <CSSTransition in={show}
                 timeout={1500}
                 classNames="slide-left"
                 unmountOnExit
