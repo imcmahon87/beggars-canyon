@@ -8,18 +8,29 @@ import menuButton from './assets/images/menu-button-mobile.png';
 function App() {
   const location = useLocation();
 
+  function mobileMenuPress() {
+    var x = document.getElementById('menu-mobile');
+    if (x.style.display === 'block') {
+        x.style.display = 'none';
+    } else {
+        x.style.display = 'block';
+    }
+  }
+
   return (
     <div className="wrapper">
-      <div className="header-mobile">
+      <div id="header-mobile">
         <Link to="/">
           <h1>BEGGARS CANYON</h1>
         </Link>
-        <div className="menu-mobile">
+        <div id="menu-mobile">
           <Link to="/shows">Upcoming Shows</Link>
           <Link to="/gallery">Gallery</Link>
           <Link to="/contact">Contact</Link>
         </div>
-        <img className="menu-button-mobile" src={menuButton} />
+        <img  id="menu-button-mobile"
+              src={menuButton}
+              onClick={mobileMenuPress} />
       </div>
     </div>
   );

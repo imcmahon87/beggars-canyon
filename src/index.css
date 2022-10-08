@@ -31,7 +31,7 @@ body {
   z-index: 0;
 }
 
-.header-mobile {
+#header-mobile {
   position: relative;
   overflow: hidden;
   padding: 0.4em 1em;
@@ -42,19 +42,19 @@ body {
   z-index: 999;
 }
 
-.header-mobile a:link, .header-mobile a:visited, .header-mobile a:hover, .header-mobile a:active {
+#header-mobile a:link, #header-mobile a:visited, #header-mobile a:hover, #header-mobile a:active {
   display: block;
   text-decoration: none;
   color: #E2E2E2;
 }
 
-.header-mobile a {
+#header-mobile a {
   color: #E2E2E2;
   font-family: 'Saira Condensed', sans-serif;
   font-size: 1.5em;
 }
 
-.menu-button-mobile {
+#menu-button-mobile {
   display: block;
   position: absolute;
   right: 1.25em;
@@ -63,6 +63,6 @@ body {
   height: 2.5em;
 }
 
-.menu-mobile {
+#menu-mobile {
   display: none;
 }
