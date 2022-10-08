@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import menuButton from './assets/images/menu-button-mobile.png';
+import Main from './components/Main';
 
 function App() {
   const location = useLocation();
@@ -32,39 +33,7 @@ function App() {
               src={menuButton}
               onClick={mobileMenuPress} />
       </div>
-      <div className="animation-left"></div>
-      <div className="animation-right"></div>
-      <div className="animation-center"></div>
-      <div className="content">
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        <p>Testing, this is a sentence</p>
-        
-      </div>
+      <Main />
     </div>
   );
 }
