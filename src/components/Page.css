@@ -48,18 +48,6 @@
     top: 20vh;
 }
 
-#page .content {
-    padding-top: -100px;
-    position: absolute;
-    background-image: url("../assets/images/foreground-tile-mobile.png");
-    background-size: 75vh auto;
-    background-position: center top;
-    top: 49vh;
-    width: 100%;
-    z-index: 4;
-    color: #E2E2E2;
-}
-
 #page .slide-left-enter {
     transform: translate(0, 700px);
     z-index: 1;

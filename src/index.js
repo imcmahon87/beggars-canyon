@@ -65,7 +65,7 @@ function App() {
           <Routes location={location}>
             <Route path="/" element={<Page />} />
             <Route path="/shows" element={<Page />} />
-            <Route path="/galley" element={<Page />} />
+            <Route path="/gallery" element={<Page />} />
             <Route path="/contact" element={<Page />} />
           </Routes>
         </CSSTransition>

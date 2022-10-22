@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Page.css';
 import { CSSTransition } from 'react-transition-group';
+import ContentMain from './ContentMain';
+import './Content.css'
 
 function Page() {
 
@@ -52,58 +54,9 @@ function Page() {
                 unmountOnExit
                 className="content"
             >
-                <div>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
 
-                </div>
             </CSSTransition>
+            <ContentMain id="Content"/>
         </div>
     );
 }
