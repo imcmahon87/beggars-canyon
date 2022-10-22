@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Page.css';
 import { CSSTransition } from 'react-transition-group';
+import ContentMain from './ContentMain';
 
 function Page() {
 
@@ -18,7 +19,7 @@ function Page() {
                 className="page-header"
             >
                 <div className="page-header">
-                    <h2>Landing Page</h2>
+                    <h2>Testing Page</h2>
                 </div>
             </CSSTransition>
 
@@ -44,7 +45,7 @@ function Page() {
                 unmountOnExit
                 className="animation-center"
             >
-                <div></div>
+                <div class="test"><p>Test</p></div>
             </CSSTransition>
             <CSSTransition in={show}
                 timeout={1500}
@@ -52,57 +53,7 @@ function Page() {
                 unmountOnExit
                 className="content"
             >
-                <div>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-                    <p>This is the main landing site</p>
-
-                </div>
+                <ContentMain />
             </CSSTransition>
         </div>
     );
