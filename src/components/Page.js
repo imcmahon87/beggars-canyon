@@ -20,7 +20,7 @@ function Page() {
                 className="page-header"
             >
                 <div className="page-header">
-                    <h2>Landing Page</h2>
+                    <h2>Testing Page</h2>
                 </div>
             </CSSTransition>
 
@@ -46,7 +46,7 @@ function Page() {
                 unmountOnExit
                 className="animation-center"
             >
-                <div></div>
+                <div class="test"><p>Test</p></div>
             </CSSTransition>
             <CSSTransition in={show}
                 timeout={1500}
@@ -54,7 +54,6 @@ function Page() {
                 unmountOnExit
                 className="content"
             >
-
             </CSSTransition>
             <ContentMain id="Content"/>
         </div>
