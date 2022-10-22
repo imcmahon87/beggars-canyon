@@ -26,29 +26,25 @@ function App() {
     let mouseMenuArea;
     menuArea.addEventListener('mouseover', () => {
         mouseMenuArea = true;
-        console.log('in area');
     });
     menuArea.addEventListener('mouseleave', () => {
         mouseMenuArea = false;
-        console.log('out of area');
     });
     document.addEventListener('click', () => {
         if (mouseMenuArea === false) {
             document.getElementById('menu-mobile').style.display = 'none';
         }
+    });
       
     // Scroll to top when clicking a link (for animation purposes)
     const menuLinks = document.getElementsByClassName('menu-link');
-    for (let i = 0; menuLinks.length; i++) {
+    for (let i = 0; i < menuLinks.length; i++) {
       menuLinks[i].addEventListener('click', () => {
         document.getElementById('menu-mobile').style.display = 'none';
         window.scrollTo(0, 0);
       });
     }
-  });
-
-
-};
+  };
 
   return (
     <div className="wrapper">

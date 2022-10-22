@@ -1,18 +1,18 @@
-.page-header {
+#shows .page-header {
     position: absolute;
     top: 9em;
     left: 0;
     right: 0;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
     background-color: rgba(255, 255, 255, 0.7);
     padding: 1em 1em;
     border-radius: 10px;
     z-index: 10;
 }
 
-.animation-left {
+#shows .animation-left {
     position: absolute;
     background-image: url("../assets/images/hill-left-mobile.png");
     background-size: 100vh auto;
@@ -24,7 +24,7 @@
     top: 0;
 }
 
-.animation-right {
+#shows .animation-right {
     position: absolute;
     background-image: url("../assets/images/hill-right-mobile.png");
     background-size: 100vh auto;
@@ -36,7 +36,7 @@
     top: 0;
 }
 
-.animation-center {
+#shows .animation-center {
     position: absolute;
     background-image: url("../assets/images/foreground-trees-mobile.png");
     background-size: 75vh auto;
@@ -48,7 +48,7 @@
     top: 20vh;
 }
 
-.content {
+#shows .content {
     padding-top: -100px;
     position: absolute;
     background-image: url("../assets/images/foreground-tile-mobile.png");
@@ -60,58 +60,64 @@
     color: #E2E2E2;
 }
 
-.slide-left-enter {
+#shows .slide-left-enter {
     transform: translate(0, 700px);
     z-index: 1;
 }
-.slide-left-enter.slide-left-enter-active {
+#shows .slide-left-enter.slide-left-enter-active {
     transform: translate(0, 0);
     transition: transform 1500ms ease;
 }
 
-.slide-right-enter {
+#shows .slide-right-enter {
     transform: translate(0, 1000px);
     z-index: 1;
 }
-.slide-right-enter.slide-right-enter-active {
+#shows .slide-right-enter.slide-right-enter-active {
     transform: translate(0, 0);
     transition: transform 1500ms ease;
 }
 
-.slide-center-enter {
+#shows .slide-center-enter {
     transform: translate(0, 1500px);
     z-index: 3;
 }
-.slide-center-enter.slide-center-enter-active {
+#shows .slide-center-enter.slide-center-enter-active {
     transform: translate(0, 0);
     transition: transform 1500ms ease;
 }
 
-.slide-content-enter {
+#shows .slide-content-enter {
     transform: translate(0, 1500px);
     z-index: 4;
 }
-.slide-content-enter.slide-content-enter-active {
+#shows .slide-content-enter.slide-content-enter-active {
     transform: translate(0, 0);
     transition: transform 1500ms ease;
 }
 
-.fade-appear {
+#shows .fade-appear {
     opacity: 0;
     z-index: 10;
 }
 
-.fade-appear.fade-appear-active {
+#shows .fade-appear.fade-appear-active {
     opacity: 1;
     transition: opacity 1000ms linear;
 }
 
-.fade-enter {
+#shows .fade-enter {
     opacity: 0;
     z-index: 10;
 }
 
-.fade-enter.fade-enter-active {
+#shows .fade-enter.fade-enter-active {
     opacity: 1;
     transition: opacity 1000ms linear 1000ms;
+}
+
+@media only screen and (orientation: landscape) {
+    #shows .page-header {
+        width: 40%;
+    }
 }

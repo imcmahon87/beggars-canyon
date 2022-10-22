@@ -10,7 +10,7 @@ function Main() {
     }, [])
 
     return (
-        <div>
+        <div id="main">
             <CSSTransition in={show}
                 timeout={1000}
                 classNames="fade"
