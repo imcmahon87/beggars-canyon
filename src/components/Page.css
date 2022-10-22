@@ -1,4 +1,4 @@
-#shows .page-header {
+#page .page-header {
     position: absolute;
     top: 9em;
     left: 0;
@@ -12,7 +12,7 @@
     z-index: 10;
 }
 
-#shows .animation-left {
+#page .animation-left {
     position: absolute;
     background-image: url("../assets/images/hill-left-mobile.png");
     background-size: 100vh auto;
@@ -24,7 +24,7 @@
     top: 0;
 }
 
-#shows .animation-right {
+#page .animation-right {
     position: absolute;
     background-image: url("../assets/images/hill-right-mobile.png");
     background-size: 100vh auto;
@@ -36,7 +36,7 @@
     top: 0;
 }
 
-#shows .animation-center {
+#page .animation-center {
     position: absolute;
     background-image: url("../assets/images/foreground-trees-mobile.png");
     background-size: 75vh auto;
@@ -48,7 +48,7 @@
     top: 20vh;
 }
 
-#shows .content {
+#page .content {
     padding-top: -100px;
     position: absolute;
     background-image: url("../assets/images/foreground-tile-mobile.png");
@@ -60,64 +60,85 @@
     color: #E2E2E2;
 }
 
-#shows .slide-left-enter {
+#page .slide-left-enter {
     transform: translate(0, 700px);
     z-index: 1;
 }
-#shows .slide-left-enter.slide-left-enter-active {
+#page .slide-left-enter.slide-left-enter-active {
     transform: translate(0, 0);
     transition: transform 1500ms ease;
 }
 
-#shows .slide-right-enter {
+#page .slide-right-enter {
     transform: translate(0, 1000px);
     z-index: 1;
 }
-#shows .slide-right-enter.slide-right-enter-active {
+#page .slide-right-enter.slide-right-enter-active {
     transform: translate(0, 0);
     transition: transform 1500ms ease;
 }
 
-#shows .slide-center-enter {
+#page .slide-center-enter {
     transform: translate(0, 1500px);
     z-index: 3;
 }
-#shows .slide-center-enter.slide-center-enter-active {
+#page .slide-center-enter.slide-center-enter-active {
     transform: translate(0, 0);
     transition: transform 1500ms ease;
 }
 
-#shows .slide-content-enter {
+#page .slide-content-enter {
     transform: translate(0, 1500px);
     z-index: 4;
 }
-#shows .slide-content-enter.slide-content-enter-active {
+#page .slide-content-enter.slide-content-enter-active {
     transform: translate(0, 0);
     transition: transform 1500ms ease;
 }
 
-#shows .fade-appear {
+#page .fade-appear {
     opacity: 0;
     z-index: 10;
 }
 
-#shows .fade-appear.fade-appear-active {
+#page .fade-appear.fade-appear-active {
     opacity: 1;
     transition: opacity 1000ms linear;
 }
 
-#shows .fade-enter {
+#page .fade-enter {
     opacity: 0;
     z-index: 10;
 }
 
-#shows .fade-enter.fade-enter-active {
+#page .fade-enter.fade-enter-active {
     opacity: 1;
     transition: opacity 1000ms linear 1000ms;
 }
 
 @media only screen and (orientation: landscape) {
-    #shows .page-header {
+    #page .page-header {
         width: 40%;
+    }
+
+    #page .animation-right {
+        background-size: auto 100vw;
+        top: -10vh;
+    }
+
+    #page .animation-left {
+        background-size: auto 100vw;
+        top: -10vh;
+    }
+    
+    #page .animation-center {
+        background-size: 100vw;
+        height: 60vh;
+        top: 20vh;
+    }
+
+    #page .content {
+        background-size: 100%;
+        top: 80vh;
     }
 }

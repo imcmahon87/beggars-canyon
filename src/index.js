@@ -4,8 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import menuButton from './assets/images/menu-button-mobile.png';
-import Main from './components/Main';
-import Shows from './components/Shows';
+import Page from './components/Page';
 
 function App() {
   const location = useLocation();
@@ -64,10 +63,10 @@ function App() {
       <SwitchTransition>
         <CSSTransition key={location.key} classNames="slide" timeout={1000}>
           <Routes location={location}>
-            <Route path="/" element={<Main />} />
-            <Route path="/shows" element={<Shows />} />
-            <Route path="/galley" element={<Main />} />
-            <Route path="/contact" element={<Shows />} />
+            <Route path="/" element={<Page />} />
+            <Route path="/shows" element={<Page />} />
+            <Route path="/galley" element={<Page />} />
+            <Route path="/contact" element={<Page />} />
           </Routes>
         </CSSTransition>
       </SwitchTransition>

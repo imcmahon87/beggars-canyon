@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './Main.css';
+import './Page.css';
 import { CSSTransition } from 'react-transition-group';
 
-function Main() {
+function Page() {
 
     let [show, setShow] = useState(false);
     useEffect(() => {
@@ -10,7 +10,7 @@ function Main() {
     }, [])
 
     return (
-        <div id="main">
+        <div id="page">
             <CSSTransition in={show}
                 timeout={1000}
                 classNames="fade"
@@ -108,4 +108,4 @@ function Main() {
     );
 }
 
-export default Main;
+export default Page;
