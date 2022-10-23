@@ -12,21 +12,11 @@
     height: 100%;
     width: auto;
     opacity: 70%;
-    animation-name: falling-person-opacity, falling-person-rotation;
+    animation-name: header-opacity, falling-person-rotation;
     animation-duration: 5s, 10s;
     animation-iteration-count: infinite, infinite;
     animation-direction: alternate, alternate;
     animation-timing-function: ease-in, ease-in-out;
-}
-
-@keyframes falling-person-opacity {
-    from {opacity: 0;}
-    to {opacity: 100%;}
-}
-
-@keyframes falling-person-rotation {
-    from {transform: rotate(45deg);}
-    to {transform: rotate(-90deg);}
 }
 
 #page .page-header {
@@ -38,9 +28,25 @@
     margin-left: auto;
     margin-right: auto;
     background-color: rgba(255, 255, 255, 0.7);
+    opacity: 0;
     padding: 1em 1em;
     border-radius: 10px;
     z-index: 10;
+    animation-name: header-opacity;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes header-opacity {
+    from {opacity: 0;}
+    to {opacity: 100%;}
+}
+
+@keyframes falling-person-rotation {
+    from {transform: rotate(45deg);}
+    to {transform: rotate(-90deg);}
 }
 
 #page .animation-left {
@@ -125,26 +131,6 @@
 #page .slide-content-enter.slide-content-enter-active {
     transform: translate(0, 0);
     transition: transform 1500ms ease;
-}
-
-#page .fade-appear {
-    opacity: 0;
-    z-index: 10;
-}
-
-#page .fade-appear.fade-appear-active {
-    opacity: 1;
-    transition: opacity 1000ms linear;
-}
-
-#page .fade-enter {
-    opacity: 0;
-    z-index: 10;
-}
-
-#page .fade-enter.fade-enter-active {
-    opacity: 1;
-    transition: opacity 1000ms linear 1000ms;
 }
 
 @media only screen and (orientation: landscape) {

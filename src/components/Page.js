@@ -39,14 +39,8 @@ function Page(props) {
 
     return (
         <div id="page">
-            <CSSTransition in={show}
-                timeout={1000}
-                classNames="fade"
-                unmountOnExit
-                className={headerType}
-            >
-                <div>{headerContent}</div>
-            </CSSTransition>
+
+            <div class={headerType}>{headerContent}</div>
 
             <CSSTransition in={show}
                 timeout={1500}
