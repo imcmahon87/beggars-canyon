@@ -1,4 +1,6 @@
+import ClipLoader from 'react-spinners/ClipLoader';
 import './index.css';
+import { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
@@ -7,6 +9,7 @@ import menuButton from './assets/images/menu-button-mobile.png';
 import Page from './components/Page';
 
 function App() {
+  const [loadingInProgress, setLoading] = useState(false);
   const location = useLocation();
 
   // Handle mobile menu accordion
@@ -47,30 +50,38 @@ function App() {
 
   return (
     <div className="wrapper">
-      <div id="header-mobile">
-        <Link to="/" className="anim-link" style={{ display: 'inline-block' }}>
-          <h1>BEGGARS CANYON</h1>
-        </Link>
-        <div id="menu-mobile">
-          <Link to="/shows" className="anim-link">Upcoming Shows</Link>
-          <Link to="/gallery" className="anim-link">Gallery</Link>
-          <Link to="/contact" className="anim-link">Contact</Link>
+      {loadingInProgress ? (
+        <div className="loader-container">
+          <ClipLoader color={'#fff'} size={150} />
         </div>
-        <img  id="menu-button-mobile"
-              src={menuButton}
-              onClick={mobileMenuPress}
-              alt="Mobile Menu Button" />
-      </div>
-      <SwitchTransition>
-        <CSSTransition key={location.key} classNames="slide" timeout={1000}>
-          <Routes location={location}>
-            <Route path="/" element={<Page route="main"/>} />
-            <Route path="/shows" element={<Page route="shows"/>} />
-            <Route path="/gallery" element={<Page route="gallery" />} />
-            <Route path="/contact" element={<Page route="contact" />} />
-          </Routes>
-        </CSSTransition>
-      </SwitchTransition>
+      ) : (
+        <div className="main-content">
+          <div id="header-mobile">
+            <Link to="/" className="anim-link" style={{ display: 'inline-block' }}>
+              <h1>BEGGARS CANYON</h1>
+            </Link>
+            <div id="menu-mobile">
+              <Link to="/shows" className="anim-link">Upcoming Shows</Link>
+              <Link to="/gallery" className="anim-link">Gallery</Link>
+              <Link to="/contact" className="anim-link">Contact</Link>
+            </div>
+            <img  id="menu-button-mobile"
+                  src={menuButton}
+                  onClick={mobileMenuPress}
+                  alt="Mobile Menu Button" />
+          </div>
+          <SwitchTransition>
+            <CSSTransition key={location.key} classNames="slide" timeout={1000}>
+              <Routes location={location}>
+                <Route path="/" element={<Page route="main"/>} />
+                <Route path="/shows" element={<Page route="shows"/>} />
+                <Route path="/gallery" element={<Page route="gallery" />} />
+                <Route path="/contact" element={<Page route="contact" />} />
+              </Routes>
+            </CSSTransition>
+          </SwitchTransition>
+        </div>
+      )}
     </div>
   );
 }
