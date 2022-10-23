@@ -3,7 +3,7 @@ import './Content.css';
 
 function ContentMain() {
     return (
-        <div id="Content">
+        <div id="content">
             <p>This is the main landing site</p>
             <p>This is the main landing site</p>
             <p>This is the main landing site</p>

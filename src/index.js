@@ -36,7 +36,7 @@ function App() {
     });
       
     // Scroll to top when clicking a link (for animation purposes)
-    const menuLinks = document.getElementsByClassName('menu-link');
+    const menuLinks = document.getElementsByClassName('anim-link');
     for (let i = 0; i < menuLinks.length; i++) {
       menuLinks[i].addEventListener('click', () => {
         document.getElementById('menu-mobile').style.display = 'none';
@@ -48,25 +48,26 @@ function App() {
   return (
     <div className="wrapper">
       <div id="header-mobile">
-        <Link to="/" className="menu-link" style={{ display: 'inline-block' }}>
+        <Link to="/" className="anim-link" style={{ display: 'inline-block' }}>
           <h1>BEGGARS CANYON</h1>
         </Link>
         <div id="menu-mobile">
-          <Link to="/shows" className="menu-link">Upcoming Shows</Link>
-          <Link to="/gallery" className="menu-link">Gallery</Link>
-          <Link to="/contact" className="menu-link">Contact</Link>
+          <Link to="/shows" className="anim-link">Upcoming Shows</Link>
+          <Link to="/gallery" className="anim-link">Gallery</Link>
+          <Link to="/contact" className="anim-link">Contact</Link>
         </div>
         <img  id="menu-button-mobile"
               src={menuButton}
-              onClick={mobileMenuPress} />
+              onClick={mobileMenuPress}
+              alt="Mobile Menu Button" />
       </div>
       <SwitchTransition>
         <CSSTransition key={location.key} classNames="slide" timeout={1000}>
           <Routes location={location}>
-            <Route path="/" element={<Page />} />
-            <Route path="/shows" element={<Page />} />
-            <Route path="/gallery" element={<Page />} />
-            <Route path="/contact" element={<Page />} />
+            <Route path="/" element={<Page route="main"/>} />
+            <Route path="/shows" element={<Page route="shows"/>} />
+            <Route path="/gallery" element={<Page route="gallery" />} />
+            <Route path="/contact" element={<Page route="contact" />} />
           </Routes>
         </CSSTransition>
       </SwitchTransition>
