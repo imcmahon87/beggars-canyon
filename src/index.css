@@ -22,7 +22,7 @@ body {
   text-align: center;
 }
 
-.wrapper {
+#wrapper {
   background-image: url("assets/images/background-mobile.png");
   background-position: center center;
   background-size: cover;

@@ -40,7 +40,7 @@ function Page(props) {
     return (
         <div id="page">
 
-            <div class={headerType}>{headerContent}</div>
+            <div className={headerType}>{headerContent}</div>
 
             <CSSTransition in={show}
                 timeout={1500}

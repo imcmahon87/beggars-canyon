@@ -7,11 +7,18 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import menuButton from './assets/images/menu-button-mobile.png';
 import Page from './components/Page';
+import myBackground1 from './assets/images/background-mobile.png';
+import myBackground2 from './assets/images/hill-left-mobile.png';
+import myBackground3 from './assets/images/hill-right-mobile.png';
+import testPic from './assets/images/test-picture.png';
+import myBackground4 from './assets/images/foreground-trees-mobile.png';
+import myBackground5 from './assets/images/foreground-tile-mobile.png';
 
 function App() {
-  const [loadingInProgress, setLoading] = useState(false);
+  const [loadingInProgress, setLoading] = useState(true);
   const location = useLocation();
 
+  console.log('what about here');
   // Handle mobile menu accordion
   function mobileMenuPress() {
     var x = document.getElementById('menu-mobile');
@@ -22,8 +29,8 @@ function App() {
     }
   }
 
-  // Minimize mobile menu when clicking outside of menu
-  window.onload = () => {
+  function onLoaded() {
+    // Minimize mobile menu when clicking outside of menu
     let menuArea = document.getElementById('header-mobile');
     let mouseMenuArea;
     menuArea.addEventListener('mouseover', () => {
@@ -46,10 +53,28 @@ function App() {
         window.scrollTo(0, 0);
       });
     }
+  }
+
+  // Preload the background images, and only then set 'loading' to false and call onLoaded()
+  const preloadImages = [myBackground1, myBackground2, testPic, myBackground3, myBackground4, myBackground5];
+  let imageCounter = 0;
+  console.log('we are here');
+  for (let i = 0; i < preloadImages.length; i++) {
+    let image = new Image();
+    image.src = preloadImages[i];
+    console.log('before ' + i);
+    image.addEventListener('load', () => {
+      console.log('Image ' + i + ' loaded: ' + image.src);
+      imageCounter += 1;
+      if (imageCounter >= 6) {
+        setLoading(false);
+        onLoaded();
+      }
+    });
   };
 
   return (
-    <div className="wrapper">
+    <div id="wrapper">
       {loadingInProgress ? (
         <div className="loader-container">
           <ClipLoader color={'#fff'} size={150} />
@@ -70,6 +95,8 @@ function App() {
                   onClick={mobileMenuPress}
                   alt="Mobile Menu Button" />
           </div>
+          <script>
+          </script>
           <SwitchTransition>
             <CSSTransition key={location.key} classNames="slide" timeout={1000}>
               <Routes location={location}>
