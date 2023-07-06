@@ -1,38 +1,167 @@
-.App {
-  text-align: center;
+.pageTitle {
+    position: absolute;
+    top: 9em;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    padding: 1em;
+    border-radius: 10px;
+    z-index: 10;
+    animation-name: header-opacity;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@media only screen and (max-width: 600px) {
+    #content {
+        margin-top: -2em;
+    }
+
+    .pageTitle {
+        width: 90%;
+        top: 17vh;
+    }
+
+    .animationLeft {
+        position: absolute;
+        background-image: url("./assets/images/hill-left-mobile.png");
+        background-size: 100vh auto;
+        background-position: center top;
+        background-repeat: no-repeat;
+        height: 100vh;
+        width: 100%;
+        z-index: 1;
+        top: -2em;
+    }
+    
+    .animationRight {
+        position: absolute;
+        background-image: url("./assets/images/hill-right-mobile.png");
+        background-size: 100vh auto;
+        background-position: center top;
+        background-repeat: no-repeat;
+        height: 100vh;
+        width: 100%;
+        z-index: 2;
+        top: -2em;
+    }
+    
+    .animationCenter {
+        position: absolute;
+        background-image: url("./assets/images/foreground-trees-mobile.png");
+        background-size: 75vh auto;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        height: 25vh;
+        width: 100%;
+        z-index: 4;
+        top: 23vh;
+    }
+    
+    .animationContent {
+        padding-top: -100px;
+        position: absolute;
+        background-image: url("./assets/images/foreground-tile-mobile.png");
+        background-size: 75vh auto;
+        background-position: center top;
+        top: 47vh;
+        width: 100%;
+        z-index: 5;
+        color: #E2E2E2;
+    }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@media only screen and (min-width: 600px) {
+    .pageTitle {
+        width: 80%;
+        min-width: fit-content;
+    }
+
+    .animationLeft {
+        position: absolute;
+        background-image: url("./assets/images/hill-left-desktop.png");
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+        height: 100vh;
+        width: 100%;
+        z-index: 1;
+        top: 0;
+    }
+    
+    .animationRight {
+        position: absolute;
+        background-image: url("./assets/images/hill-right-desktop.png");
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+        height: 100vh;
+        width: 100%;
+        z-index: 2;
+        top: 0;
+    }
+    
+    .animationCenter {
+        position: relative;
+        background-image: url("./assets/images/foreground-trees-desktop.png");
+        background-size: contain;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 0;
+        padding-top: 35%;
+        /*padding-top: 19.53%;*/
+        z-index: 4;
+    }
+    
+    .animationContent {
+        position: absolute;
+        background-image: url("./assets/images/foreground-tile-desktop.jpg");
+        background-size: contain;
+        background-repeat: repeat-y;
+        background-position: center top;
+        width: 100%;
+        z-index: 5;
+        color: #E2E2E2;
+    }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media only screen and (min-width: 900px) {
+    #content {
+        margin-top: -4em;
+    }
+
+    .pageTitle {
+        width: 40%;
+        top: 10vw;
+        padding: 2em 2em;
+        min-width: fit-content;
+    }
+
+    .animationLeft {
+        top: -2em;
+    }
+    
+    .animationRight {
+        top: -2em;
+    }
+    
+    .animationCenter {
+        padding-top: 25%;
+    }
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media only screen and (min-width: 1200px) {
+    .pageTitle {
+        width: 40%;
+        top: 10vw;
+        padding: 3em 2em;
+        min-width: fit-content;
+    }
 }

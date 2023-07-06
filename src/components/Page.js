@@ -1,37 +1,29 @@
+import './App.css';
 import React, { useState, useEffect } from 'react';
-import './Page.css';
 import { CSSTransition } from 'react-transition-group';
 import ContentMain from './ContentMain';
 import ContentShows from './ContentShows';
 import ContentGallery from './ContentGallery';
 import ContentContact from './ContentContact';
-import './Content.css'
-import fallingPerson from '../assets/images/falling-person.png';
 
-function Page(props) {
-
-    let pageContent;
+function App(props) {
+    // Pass a header name and page content into the title/content components
     let headerContent;
-    let headerType;
+    let pageContent;
     if (props.route === 'shows') {
         pageContent = <ContentShows />;
-        headerType = "page-header";
-        headerContent = <h2>Upcoming Shows</h2>;
+        headerContent = <h1>upcoming shows</h1>;
     } else if (props.route === 'gallery') {
         pageContent = <ContentGallery />;
-        headerType = "page-header";
-        headerContent = <h2>Media Gallery</h2>;
+        headerContent = <h1>media gallery</h1>;
     } else if (props.route === 'contact') {
         pageContent = <ContentContact />;
-        headerType = "page-header";
-        headerContent = <h2>Contact Us</h2>;
+        headerContent = <h1>contact us</h1>;
     } else {
         pageContent = <ContentMain />
-        headerType = "main-header";
-        headerContent = <img id="falling-person" src={fallingPerson} alt="Falling Person" />;
+        headerContent = <h1>beggars canyon</h1>;
     }
     
-
     let [show, setShow] = useState(false);
     useEffect(() => {
         setTimeout(()=>setShow(true), 1);
@@ -39,38 +31,36 @@ function Page(props) {
 
     return (
         <div id="page">
-
-            <div className={headerType}>{headerContent}</div>
-
+            <div className="pageTitle">{headerContent}</div>
             <CSSTransition in={show}
-                timeout={1500}
+                timeout={750}
                 classNames="slide-left"
                 unmountOnExit
-                className="animation-left"
+                className="animationLeft"
             >
                 <div></div>
             </CSSTransition>
             <CSSTransition in={show}
-                timeout={1500}
+                timeout={750}
                 classNames="slide-right"
                 unmountOnExit
-                className="animation-right"
+                className="animationRight"
             >
                 <div></div>
             </CSSTransition>
             <CSSTransition in={show}
-                timeout={1500}
+                timeout={750}
                 classNames="slide-center"
                 unmountOnExit
-                className="animation-center"
+                className="animationCenter"
             >
                 <div></div>
             </CSSTransition>
             <CSSTransition in={show}
-                timeout={1500}
+                timeout={750}
                 classNames="slide-content"
                 unmountOnExit
-                className="animation-content"
+                className="animationContent"
             >
                 <div>{pageContent}</div>
             </CSSTransition>
@@ -78,4 +68,4 @@ function Page(props) {
     );
 }
 
-export default Page;
+export default App;

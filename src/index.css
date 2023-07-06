@@ -1,17 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600&display=swap");
 
+@font-face {
+  font-family: 'docktrin';
+  src: url('./assets/fonts/docktrin.ttf');
+}
+
 * {
   box-sizing: border-box;
 }
 
 h1 {
-  font-size: 1.5em;
   margin: 0;
-  font-family: 'Saira Condensed', sans-serif;
+  font-family: 'docktrin', sans-serif;
+  margin-bottom: -0.4em;
 }
 
-h2 {
-  font-size: 2em;
+h4 {
+  font-size: 1.5em;
   margin: 0;
   font-family: 'Saira Condensed', sans-serif;
 }
@@ -31,7 +36,7 @@ body {
   z-index: 0;
 }
 
-#header-mobile {
+#headerMobile {
   position: fixed;
   overflow: hidden;
   padding: 0.4em 1em;
@@ -39,22 +44,48 @@ body {
   text-align: left;
   background-color: #1E1E1E;
   width: 100%;
-  z-index: 999;
+  z-index: 998;
 }
 
-#header-mobile a:link, #header-mobile a:visited, #header-mobile a:hover, #header-mobile a:active {
+#headerMobile a:link, #headerMobile a:visited, #headerMobile a:hover, #headerMobile a:active,
+#headerDesktop a:link, #headerDesktop a:visited, #headerDesktop a:hover, #headerDesktop a:active {
   display: block;
   text-decoration: none;
   color: #E2E2E2;
 }
 
-#header-mobile a {
+#headerMobile a {
   color: #E2E2E2;
   font-family: 'Saira Condensed', sans-serif;
   font-size: 1.5em;
 }
 
-#menu-button-mobile {
+#headerDesktop {
+  padding: 1em 1em;
+  color: #E2E2E2;
+  display: block;
+  background-color: #1E1E1E;
+  width: 100%;
+  position: relative;
+  z-index: 998;
+}
+
+#headerDesktopWrapper {
+  z-index: 999;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  margin: 0 auto;
+}
+
+#headerDesktop a {
+  color: #E2E2E2;
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 1.5em;
+}
+
+#menuButtonMobile {
   display: block;
   position: absolute;
   right: 1.25em;
@@ -63,18 +94,58 @@ body {
   height: 2.5em;
 }
 
-#menu-mobile {
+#menuMobile {
   display: none;
 }
 
-#menu-mobile a {
+#menuMobile a {
   margin: 0.3em 0;
 }
 
-.slide-exit {
-  transform: translate(0, 0);
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 4em;
+    line-height: 1em;
+  }
+  #headerMobile {
+    display: block;
+  }
+  #headerDesktop {
+    display: none;
+  }
 }
-.slide-exit.slide-exit-active {
-  transform: translate(0, 600px);
-  transition: transform 1000ms ease;
+
+@media only screen and (min-width: 600px) {
+  h1 {
+    font-size: 4em;
+    line-height: 1em;
+  }
+
+  #headerMobile {
+    display: none;
+  }
+  #headerDesktop {
+    display: block;
+  }
+  html {
+    overflow-y:scroll;
+  }
+  #headerDesktopWrapper {
+    width: 100%
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  h1 {
+    font-size: 4em;
+  }
+  #headerDesktopWrapper {
+    width: 60%
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  h1 {
+    font-size: 6em;
+  }
 }
