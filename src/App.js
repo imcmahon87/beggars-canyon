@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ContentMain from './components/ContentMain';
-import ContentShows from './components/ContentShows';
+import ContentReleases from './components/ContentReleases';
 import ContentGallery from './components/ContentGallery';
 import ContentContact from './components/ContentContact';
 
@@ -10,9 +10,9 @@ function App(props) {
     // Pass a header name and page content into the title/content components
     let headerContent;
     let pageContent;
-    if (props.route === 'shows') {
-        pageContent = <ContentShows />;
-        headerContent = <h1>upcoming shows</h1>;
+    if (props.route === 'releases') {
+        pageContent = <ContentReleases />;
+        headerContent = <h1>releases</h1>;
     } else if (props.route === 'gallery') {
         pageContent = <ContentGallery />;
         headerContent = <h1>media gallery</h1>;

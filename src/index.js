@@ -12,7 +12,7 @@ import Header from './components/Header';
 // Store window dimensions so we know which images we're waiting to load
 let windowWidth = window.innerWidth;
 
-// Image variables to load before animation starts
+// Image/font variables to load before animation starts
 let imageBackground;
 let imageHillLeft;
 let imageHillRight;
@@ -94,7 +94,7 @@ function Index() {
             <CSSTransition key={location.key} classNames="slide" timeout={500}>
               <Routes location={location}>
                 <Route path="/" element={<App route="main"/>} />
-                <Route path="/shows" element={<App route="shows"/>} />
+                <Route path="/releases" element={<App route="releases"/>} />
                 <Route path="/gallery" element={<App route="gallery" />} />
                 <Route path="/contact" element={<App route="contact" />} />
               </Routes>
@@ -106,5 +106,5 @@ function Index() {
   );
 }
 
-const Root = () => <BrowserRouter><Index /></BrowserRouter>;
+const Root = () => <BrowserRouter basename={'beggarscanyon'}><Index /></BrowserRouter>;
 render(<Root />, document.getElementById('root'));

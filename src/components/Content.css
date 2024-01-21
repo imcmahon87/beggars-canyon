@@ -1,0 +1,157 @@
+@media only screen and (max-width: 600px) {
+    #content {
+        width: 100%;
+        margin-top: -1em;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #content {
+        width: 60%;
+        margin: -5em auto 0 auto;
+        text-align: center;
+    }
+
+    #mainInfo {
+        margin: 3em 0;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    #mainInfo img {
+        height: 30em;
+        width: auto;
+    }
+
+    .infoDiv {
+        margin-right: 3em;
+        width: 40%;
+        padding: 2em 2em;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+    }
+
+    .paragraphDiv {
+        width: 80%;
+        margin: 0 auto;
+        padding: 2em 2em;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+    }
+
+    .releaseWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        margin: 0 auto 2em auto;
+        padding: 1em 1em;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+    }
+
+    .releaseWrapper img {
+        border-radius: 10px;
+    }
+
+    .releaseHeader {
+        display: flex;
+    }
+
+    .releaseWrapper img {
+        width: 10em;
+        height: auto;
+    }
+
+    .releaseLeft {
+        width: fit-content;
+    }
+
+    .releaseRight {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-left: 2em;
+    }
+
+    .releaseRight p {
+        margin: 0;
+        line-height: 1.4em;
+        text-align: left;
+    }
+
+    .releaseRightTop {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .releaseRightTop h2 {
+        display: inline;
+        padding-top: 0.2em;
+    }
+
+    .releaseDetails {
+        margin: 1em 0;
+        background-color: #1E1E1E;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+    }
+
+    .releaseDetails hr {
+        width: 100%;
+        margin: 0;
+    }
+
+    .releaseTrack {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.3em 1em;
+        cursor: pointer;
+        transition: 0.4s;
+        background-color: #1E1E1E;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .releaseTrack:hover {
+        background-color: #424242;
+    }
+
+    .trackLyrics {
+        max-height: 0;
+        width: 100%;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background-color: #2b2b2b;
+    }
+
+    .singleLyrics {
+        border-radius: 10px;
+    }
+
+    .trackLyrics p {
+        margin: 1em auto;
+        color: #E2E2E2;
+        line-height: 1.5em;
+        width: 50%;
+    }
+
+    .pageHeader {
+        width: 40%;
+        padding: 2em 2em;
+        min-width: fit-content;
+        text-align: center;
+        margin: 1em auto 2em auto;
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 1em;
+        border-radius: 10px;
+        z-index: 10;
+    }
+}

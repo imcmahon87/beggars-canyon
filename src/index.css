@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
 @font-face {
   font-family: 'docktrin';
@@ -15,16 +16,79 @@ h1 {
   margin-bottom: -0.4em;
 }
 
+h2 {
+  padding-top: 0.4em;
+  margin: 0;
+  line-height: 1em;
+  color: #000000;
+  font-family: 'docktrin', sans-serif;
+  font-size: 3em;
+  font-weight: 700;
+}
+
+h3 {
+  margin: 0;
+  color: #000000;
+  font-family: 'docktrin', sans-serif;
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1.2em;
+}
+
 h4 {
-  font-size: 1.5em;
+  font-size: 1.4em;
+  margin: 0;
+  padding: 1.1em 0.2em 0.7em 0.2em;
+  line-height: 0;
+  font-family: 'docktrin', sans-serif;
+}
+
+h5 {
   margin: 0;
   font-family: 'Saira Condensed', sans-serif;
+  font-size: 1.5em;
+  color: #E2E2E2;
+}
+
+p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1em;
+  line-height: 2em;
+  color: #000000;
+}
+
+.gradientHeader::before {
+  content: "";
+  position: absolute;
+  top: 80%;
+  width: 91%;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+    );
 }
 
 body {
   margin: 0;
   padding: 0;
   text-align: center;
+}
+
+.loader-container {
+  position: relative;
+  top: 25vh;
 }
 
 #wrapper {
@@ -74,15 +138,41 @@ body {
   z-index: 999;
   position: relative;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   width: 60%;
   margin: 0 auto;
+}
+
+#headerDesktopBottom {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#headerDesktopTop {
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1em 0;
 }
 
 #headerDesktop a {
   color: #E2E2E2;
   font-family: 'Saira Condensed', sans-serif;
   font-size: 1.5em;
+}
+
+#footer {
+  background-color: #1E1E1E;
+  width: 100%;
+}
+
+#footer p {
+  color: #FFFFFF;
 }
 
 #menuButtonMobile {
@@ -124,14 +214,36 @@ body {
   #headerMobile {
     display: none;
   }
+
   #headerDesktop {
     display: block;
   }
+
   html {
     overflow-y:scroll;
   }
+
   #headerDesktopWrapper {
     width: 100%
+  }
+
+  #footer {
+    padding: 0.15em 0 1em 0;
+    margin: 2em 0 0 0;
+  }
+
+  #footer span {
+    margin: 0 1em;
+  }
+
+  #headerDesktopTop img {
+    width: 2.5em;
+    height: auto;
+  }
+
+  #footer img {
+    width: 3.5em;
+    height: auto;
   }
 }
 

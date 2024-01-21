@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import menuButton from '../assets/images/menu-button-mobile.png';
+import iconFacebook from '../assets/images/icon-facebook.png';
+import iconInstagram from '../assets/images/icon-instagram.png';
+import iconSpotify from '../assets/images/icon-spotify.png';
 
 function Header() {
 
@@ -17,10 +20,10 @@ function Header() {
         <div>
             <div id="headerMobile">
                 <Link to="/" className="anim-link" style={{ display: 'inline-block' }}>
-                <h4>BEGGARS CANYON</h4>
+                <h4>beggars canyon</h4>
                 </Link>
                 <div id="menuMobile">
-                <Link to="/shows" className="anim-link">Upcoming Shows</Link>
+                <Link to="/releases" className="anim-link">Releases</Link>
                 <Link to="/gallery" className="anim-link">Gallery</Link>
                 <Link to="/contact" className="anim-link">Contact</Link>
                 </div>
@@ -31,10 +34,18 @@ function Header() {
             </div>
             <div id="headerDesktop">
                 <div id="headerDesktopWrapper">
-                    <Link to="/" className="anim-link">Home</Link>
-                    <Link to="/shows" className="anim-link">Upcoming Shows</Link>
-                    <Link to="/gallery" className="anim-link">Gallery</Link>
-                    <Link to="/contact" className="anim-link">Contact</Link>
+                    <div id="headerDesktopTop">
+                        <a target="_blank" href="https://www.facebook.com/beggarscanyonpdx"><img src={iconFacebook} /></a>
+                        <a target="_blank" href="https://www.instagram.com/beggars_canyon"><img src={iconInstagram} /></a>
+                        <a target="_blank" href="https://open.spotify.com/artist/4q6SYdyrRaHOxJfc2Uhmgn?si=vm7cuy2gSt6so_-LeeKCJA"><img src={iconSpotify} /></a>
+                    </div>
+                    <div id="headerDesktopBottom">
+                        <Link to="/" className="anim-link">Home</Link>
+                        <Link to="/releases" className="anim-link">Releases</Link>
+                        <Link to="/gallery" className="anim-link">Gallery</Link>
+                        <Link to="/contact" className="anim-link">Contact</Link>
+                    </div>
+
                 </div>
             </div>
         </div>
