@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import App from './App';
+import Login from './components/Login';
 import Header from './components/Header';
 
 // Store window dimensions so we know which images we're waiting to load
@@ -97,6 +98,7 @@ function Index() {
                 <Route path="/releases" element={<App route="releases"/>} />
                 <Route path="/gallery" element={<App route="gallery" />} />
                 <Route path="/contact" element={<App route="contact" />} />
+                <Route path="/login" element={<Login />} />
               </Routes>
             </CSSTransition>
           </SwitchTransition>

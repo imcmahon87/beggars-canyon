@@ -1,10 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Content.css';
 import Carousel from './Carousel';
 import Footer from './Footer';
 import bandPhoto from '../assets/images/band-photo.jpg';
 
+let showData = [];
+let performerData = [];
+let appendData = [];
+let displayData = [];
+let noShows = 0;
+
+async function getShows(callback) {
+    const showResponse = await fetch('http://localhost:3002/getShows');
+    const performerResponse = await fetch('http://localhost:3002/getPerformers');
+    showData = await showResponse.json();
+    performerData = await performerResponse.json();
+    if (showData.length < 1) {
+        noShows = 1;
+    }
+    for (let i = 0; i < showData.length; i++) {
+        displayData[i] = showData[i];
+        displayData[i].Other = 'w/ ';
+        appendData = [];
+        for (let j = 0; j < performerData.length; j++) {
+            if (performerData[j].ShowId === displayData[i].ShowId) {
+                appendData.push(performerData[j].Name);
+            }
+        }
+        if (appendData.length > 0) {
+            for (let j = 0; j < appendData.length; j++) {
+                displayData[i].Other += appendData[j]
+                if (j < appendData.length - 1) {
+                    displayData[i].Other += ', ';
+                }
+            }
+        } else {
+            displayData[i].Other = ''
+        }
+
+    }
+
+    callback();
+}
+
 function ContentMain() {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (loading === true) {
+            getShows(setLoading);
+        }
+    }, [loading]);
+
     return (
         <>
             <div id="content">
@@ -22,13 +69,34 @@ function ContentMain() {
                     </div>
                     <img src={bandPhoto} />
                 </div>
-                <div className="paragraphDiv">
-                    <h3>Upcoming Shows</h3>
-                    <p>12/1 | Bermerton, WA | The Charleston</p>
-                    <p>12/2 | Portland, OR | Twilight Cafe</p>
-                    <p>12/28 | Eugene, OR | John Henry's</p>
-                    <p>12/29 | Bend, OR | Volcanic Theater</p>
+                <div className="pageHeader">
+                    <h2>Upcoming Shows</h2>
                 </div>
+                { loading ? 'Loading' : (
+                    displayData.map((show) => {
+                        return (
+                            <div key={show.ShowId} className="showDiv">
+                                <div className="showDivMain">
+                                    <span>
+                                        <p>{show.Date}</p>
+                                    </span>
+                                    <span>
+                                        <p style={{'fontWeight': '700'}}>{show.Venue} @ {show.Time}</p>
+                                    </span>
+                                    <span>
+                                        <p>{show.City}, {show.State}</p>
+                                    </span>
+                                </div>
+                                <div className="showDivWith">
+                                    <p>{show.Other}</p>
+                                </div>
+                            </div>
+                        )
+                    })
+                )
+                }
+                { noShows ? <div className="showDiv"><p>There are no shows currently scheduled</p></div> : 
+                            <></> }
             </div>
             <Footer />
         </>
