@@ -17,6 +17,8 @@ async function getShows(callback) {
     performerData = await performerResponse.json();
     if (showData.length < 1) {
         noShows = 1;
+    } else {
+        noShows = 0;
     }
     for (let i = 0; i < showData.length; i++) {
         displayData[i] = showData[i];
@@ -81,7 +83,7 @@ function ContentMain() {
                                         <p>{show.Date}</p>
                                     </span>
                                     <span>
-                                        <p style={{'fontWeight': '700'}}>{show.Venue} @ {show.Time}</p>
+                                        <p style={{'fontWeight': '700'}}>{show.Venue} @ {show.Time ? show.Time : 'Showtime TBA'}</p>
                                     </span>
                                     <span>
                                         <p>{show.City}, {show.State}</p>

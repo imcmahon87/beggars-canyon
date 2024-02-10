@@ -36,9 +36,9 @@ app.post('/login', (req, res) => {
 
     if (username && password) {
         db.query('SELECT * FROM Login \
-                  WHERE User = "' + username + '";', (err, result) => {
+                  WHERE User = ?', [username], (err, result) => {
                     if (err) {
-                        console.log(err)
+                        console.log(err);
                     }
                     if (result) {
                         if (result.length > 0) {
@@ -66,18 +66,67 @@ app.post('/login', (req, res) => {
 
 app.post('/newshow', (req, res) => {
     const date = req.body.date;
-    const time = req.body.time;
+    let time = req.body.time;
     const venue = req.body.venue;
     const city = req.body.city;
     const state = req.body.state;
 
-    if (date && time && venue && city && state) {
+    if (time === '') {
+        time = null;
+    }
+
+    if (date && venue && city && state) {
         db.query('INSERT INTO Shows (Date, Time, Venue, City, State) \
                   VALUES(?, ?, ?, ?, ?);', [date, time, venue, city, state], (err, result) => {
                     if (err) {
-                        console.log(err)
+                        console.log(err);
                     }
                     console.log(result);
+                    res.send(result);
+        });
+    }
+});
+
+app.post('/newperformer', (req, res) => {
+    const showId = req.body.id;
+    const performer = req.body.performer;
+
+    if (showId && performer) {
+        db.query('INSERT INTO Other_Performers (ShowId, Name) \
+                  VALUES(?,?);', [showId, performer], (err, result) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    console.log(result);
+                    res.send(result);
+        });
+    }
+});
+
+app.post('/deleteshow', (req, res) => {
+    const showId = req.body.id;
+    console.log('Deleting show Id# ', showId);
+    if (showId) {
+        db.query('DELETE FROM Shows WHERE ShowId = ?;', [showId], (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log(result);
+            res.send(result);
+        });
+    }
+});
+
+app.post('/deleteperformer', (req, res) => {
+    const showId = req.body.id;
+    console.log('Deleting all performers for show Id# ', showId);
+    if (showId) {
+        db.query('DELETE FROM Other_Performers WHERE ShowId = ?;', [showId], (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log(result);
+            res.send(result);
         });
     }
 });
