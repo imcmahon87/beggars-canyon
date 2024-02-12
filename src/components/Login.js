@@ -157,6 +157,35 @@ function Login() {
         }
     }
 
+    function imageSubmit(e) {
+        e.preventDefault();
+        /*const formData = new FormData(e.currentTarget);
+
+        const imageData = {
+            description: formData.get('description'),
+            image: formData.get('image')
+        }
+        console.log(imageData);*/
+        const name = document.getElementById('description');
+        const files = document.getElementById('files');
+        const formData = new FormData();
+        formData.append('description', name.value);
+        for(let i =0; i < files.files.length; i++) {
+            formData.append('files', files.files[i]);
+        }
+        console.log(formData);
+        fetch('http://localhost:3002/uploadimage', {
+            method: 'POST',
+            body: formData,
+            /*headers: { 'Content-Type': 'application/json' },*/
+            /*headers: {
+                'Content-Type': 'multipart/form-data'
+            }*/
+        })
+        .then((res) => console.log(res))
+        .catch((err) => ('Error: ' + err));
+    }
+
     return (
         <>
             { authenticated ? (
@@ -202,9 +231,6 @@ function Login() {
                             )
                         })
                     )}
-                    <div>
-                        <input type="file" />
-                    </div>
                     { noShows ? <div className="showDiv"><p>There are no shows currently scheduled</p></div> : 
                                 <></> }
                     </div>
@@ -217,6 +243,14 @@ function Login() {
                         <input type="password" id="password" onChange={(e) => setUser({...user, password: e.target.value})}  />
                         <button type="submit">Submit</button>
                         </form>
+                        <div>
+                            <form id="imageForm" onSubmit={imageSubmit} >
+                                <label htmlFor="Image Description">Image Description</label>
+                                <input type="text" id="description" name="description" />
+                                <input id="files" name="files" type="file" multiple />
+                                <button type="submit">Upload</button>
+                            </form>
+                        </div>
                     </>
             }
         </>

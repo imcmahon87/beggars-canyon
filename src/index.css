@@ -6,6 +6,11 @@
   src: url('./assets/fonts/docktrin.ttf');
 }
 
+iframe
+{
+    display: none;
+}
+
 * {
   box-sizing: border-box;
 }
