@@ -74,6 +74,22 @@ function ContentGallery() {
         }
     }
 
+    function deleteImage(image) {
+        const index = sortedImages.indexOf(image);
+        const imageData = sortedImages[index];
+        console.log(imageData);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(imageData)
+        };
+        fetch('http://localhost:3002/deleteimage', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                setLoading(true);
+        });
+    }
+
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -88,9 +104,10 @@ function ContentGallery() {
                 sortedImages.map((image) => {
                     return (
                         <div key={image.ImageId} className="galleryImage">
-                            <img src={'http://localhost:3000/beggarscanyon/' + image.File} />
+                            <img src={'http://localhost:3000/beggarscanyon/gallery/' + image.File} />
                             <button onClick={() => {shiftBack(image)}}>-</button>
                             <button onClick={() => {shiftForward(image)}}>+</button>
+                            <button onClick={() => {deleteImage(image)}}>Delete</button>
                         </div>
                     )
                 })

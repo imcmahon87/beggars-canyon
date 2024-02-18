@@ -4,7 +4,6 @@ const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const images = require('./images.json');
 
 const app = express();
 const PORT = 3002;
@@ -25,15 +24,30 @@ const checkFileType = function (file, cb) {
     }
 };
 
-const storageEngine = multer.diskStorage({
-    destination: "../public",
+const storageEngineGallery = multer.diskStorage({
+    destination: "../public/gallery",
     filename: (req, file, cb) => {
         cb(null, `${Date.now()}-${file.originalname}`);
     },
 });
 
-const upload = multer({
-    storage: storageEngine,
+const storageEngineCarousel = multer.diskStorage({
+    destination: "../public/carousel",
+    filename: (req, file, cb) => {
+        cb(null, `${Date.now()}-${file.originalname}`);
+    },
+});
+
+const uploadGallery = multer({
+    storage: storageEngineGallery,
+    limits: { fileSize: 1000000 },
+    fileFilter: (req, file, cb) => {
+        checkFileType(file, cb);
+    }
+});
+
+const uploadCarousel = multer({
+    storage: storageEngineCarousel,
     limits: { fileSize: 1000000 },
     fileFilter: (req, file, cb) => {
         checkFileType(file, cb);
@@ -76,8 +90,34 @@ app.get('/getimages', (req, res) => {
     });
 });
 
+app.get('/getcarouselimages', (req, res) => {
+    db.query('SELECT ImageId, File, Description \
+              FROM Carousel;', (err, result) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log(result);
+                res.send(result);
+    });
+});
+
 app.get('/getimageorder', (req, res) => {
     fs.readFile('./images.json', 'utf8', (err, jsonString) => {
+        if (err) {
+            console.log('File read error', err);
+            return;
+        }
+        try {
+            const imageOrder = JSON.parse(jsonString);
+            res.send(imageOrder);
+        } catch (err) {
+            console.log('Error parsing JSON string', err);
+        }
+    });
+});
+
+app.get('/getcarouselimageorder', (req, res) => {
+    fs.readFile('./carousel.json', 'utf8', (err, jsonString) => {
         if (err) {
             console.log('File read error', err);
             return;
@@ -192,7 +232,7 @@ app.post('/deleteperformer', (req, res) => {
     }
 });
 
-app.post('/uploadimage', upload.array('files'), (req, res) => {
+app.post('/uploadimage', uploadGallery.array('files'), (req, res) => {
     //console.log(req.body);
     //console.log(req.files);
     const description = req.body.description;
@@ -245,6 +285,59 @@ app.post('/uploadimage', upload.array('files'), (req, res) => {
     }
 });
 
+app.post('/uploadcarousel', uploadCarousel.array('carouselfiles'), (req, res) => {
+    //console.log(req.body);
+    //console.log(req.files);
+    const description = req.body.carouseldescription;
+    const filename = req.files[0].filename;
+    console.log(req.body.carouseldescription);
+    console.log(req.files[0].filename);
+
+    if (description && filename) {
+        db.query('INSERT INTO Carousel (File, Description) \
+                  VALUES (?, ?);', [filename, description], (err, result) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    console.log(result);
+                    //res.send(result);
+                    db.query('SELECT ImageId FROM Carousel WHERE File = ?;', [filename], (err, result) => {
+                        if (err) {
+                            console.log(err);
+                        }
+                        console.log(`File ${filename} at:`);
+                        console.log(result[0].ImageId);
+                        res.send(result);
+
+                        // Read/Write JSON file with image order
+                        const imageId = result[0].ImageId;
+                        fs.readFile('./carousel.json', 'utf8', (err, jsonString) => {
+                            if (err) {
+                                console.log('File read error', err);
+                                return;
+                            }
+                            try {
+                                const imageArray = JSON.parse(jsonString);
+                                console.log(imageArray);
+                                imageArray.order.push(imageId);
+                                const newJsonString = JSON.stringify(imageArray);
+                                fs.writeFile('./carousel.json', newJsonString, err => {
+                                    if (err) {
+                                        console.log('Error writing file', err);
+                                    } else {
+                                        console.log('Successfully updated image order');
+                                    }
+                                });
+                            } catch (err) {
+                                console.log('Error parsing JSON string', err);
+                            }
+                        });
+
+                    });
+        });
+    }
+});
+
 app.post('/updateimageorder', (req, res) => {
     const newOrder = req.body;
     try {
@@ -261,6 +354,131 @@ app.post('/updateimageorder', (req, res) => {
         console.log('Error parsing JSON string', err);
     }
 });
+
+app.post('/updatecarouselorder', (req, res) => {
+    console.log(req.body);
+    const newOrder = req.body;
+    try {
+        const newJsonString = JSON.stringify(newOrder);
+        fs.writeFile('./carousel.json', newJsonString, err => {
+            if (err) {
+                console.log('Error writing file', err);
+            } else {
+                console.log('Successfully updated image order');
+                res.send(newJsonString);
+            }
+        });
+    } catch (err) {
+        console.log('Error parsing JSON string', err);
+    }
+});
+
+app.post('/deletecarousel', (req, res) => {
+    console.log(req.body);
+    const imageData = req.body;
+    const imageId = imageData.ImageId;
+    const imageFile = imageData.File;
+
+    // Update carousel.json
+    fs.readFile('./carousel.json', 'utf8', (err, jsonString) => {
+        if (err) {
+            console.log('File read error', err);
+            return;
+        }
+        try {
+            const imageArray = JSON.parse(jsonString);
+            console.log(imageArray);
+            const deleteImage = imageArray.order.indexOf(imageId);
+            imageArray.order.splice(deleteImage, 1);
+            const newJsonString = JSON.stringify(imageArray);
+            fs.writeFile('./carousel.json', newJsonString, err => {
+                if (err) {
+                    console.log('Error writing file', err);
+                } else {
+                    console.log('Successfully updated image order');
+                }
+            });
+        } catch (err) {
+            console.log('Error parsing JSON string', err);
+        }
+    });
+
+    // Delete file on filesystem
+    fs.unlink('../public/' + imageFile, function(err) {
+        if(err && err.code == 'ENOENT') {
+            // file doens't exist
+            console.info("File doesn't exist, won't remove it.");
+        } else if (err) {
+            // other errors, e.g. maybe we don't have enough permission
+            console.error("Error occurred while trying to remove file");
+        } else {
+            console.info(`removed`);
+        }
+    });
+
+    // Delete database entry
+    db.query('DELETE FROM Carousel WHERE ImageId = ?;', [imageId], (err, result) => {
+      if (err) {
+          console.log(err);
+      }
+      console.log(result);
+      res.send(result);
+    });
+});
+
+app.post('/deleteimage', (req, res) => {
+    console.log(req.body);
+    const imageData = req.body;
+    const imageId = imageData.ImageId;
+    const imageFile = imageData.File;
+
+    // Update carousel.json
+    fs.readFile('./images.json', 'utf8', (err, jsonString) => {
+        if (err) {
+            console.log('File read error', err);
+            return;
+        }
+        try {
+            const imageArray = JSON.parse(jsonString);
+            console.log(imageArray);
+            const deleteImage = imageArray.order.indexOf(imageId);
+            imageArray.order.splice(deleteImage, 1);
+            const newJsonString = JSON.stringify(imageArray);
+            fs.writeFile('./images.json', newJsonString, err => {
+                if (err) {
+                    console.log('Error writing file', err);
+                } else {
+                    console.log('Successfully updated image order');
+                }
+            });
+        } catch (err) {
+            console.log('Error parsing JSON string', err);
+        }
+    });
+
+    // Delete file on filesystem
+    fs.unlink('../public/' + imageFile, function(err) {
+        if(err && err.code == 'ENOENT') {
+            // file doens't exist
+            console.info("File doesn't exist, won't remove it.");
+        } else if (err) {
+            // other errors, e.g. maybe we don't have enough permission
+            console.error("Error occurred while trying to remove file");
+        } else {
+            console.info(`removed`);
+        }
+    });
+
+    // Delete database entry
+    db.query('DELETE FROM Images WHERE ImageId = ?;', [imageId], (err, result) => {
+      if (err) {
+          console.log(err);
+      }
+      console.log(result);
+      res.send(result);
+    });
+});
+    
 
 
 app.listen(PORT, () => {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import LoginCarousel from './LoginCarousel';
 
 let showData = [];
 let performerData = [];
@@ -186,6 +187,35 @@ function Login() {
         .catch((err) => ('Error: ' + err));
     }
 
+    function carouselSubmit(e) {
+        e.preventDefault();
+        /*const formData = new FormData(e.currentTarget);
+
+        const imageData = {
+            description: formData.get('description'),
+            image: formData.get('image')
+        }
+        console.log(imageData);*/
+        const name = document.getElementById('carouseldescription');
+        const files = document.getElementById('carouselfiles');
+        const formData = new FormData();
+        formData.append('carouseldescription', name.value);
+        for(let i =0; i < files.files.length; i++) {
+            formData.append('carouselfiles', files.files[i]);
+        }
+        console.log(formData);
+        fetch('http://localhost:3002/uploadcarousel', {
+            method: 'POST',
+            body: formData,
+            /*headers: { 'Content-Type': 'application/json' },*/
+            /*headers: {
+                'Content-Type': 'multipart/form-data'
+            }*/
+        })
+        .then((res) => console.log(res))
+        .catch((err) => ('Error: ' + err));
+    }
+
     return (
         <>
             { authenticated ? (
@@ -234,6 +264,21 @@ function Login() {
                     { noShows ? <div className="showDiv"><p>There are no shows currently scheduled</p></div> : 
                                 <></> }
                     </div>
+                    <div>
+                        <form id="imageForm" onSubmit={imageSubmit} >
+                            <label htmlFor="Image Description">Image Description</label>
+                            <input type="text" id="description" name="description" />
+                            <input id="files" name="files" type="file" multiple />
+                            <button type="submit">Upload</button>
+                        </form>
+                        <form id="carouselForm" onSubmit={carouselSubmit} >
+                            <label htmlFor="carouseldescription">Carousel Image Description</label>
+                            <input type="text" id="carouseldescription" name="carouseldescription" />
+                            <input id="carouselfiles" name="carouselfiles" type="file" multiple />
+                            <button type="submit">Upload</button>
+                        </form>
+                    </div>
+                    <LoginCarousel />
                 </>
                 ) : <>
                         <form onSubmit={handleSubmit}>
@@ -244,13 +289,7 @@ function Login() {
                         <button type="submit">Submit</button>
                         </form>
                         <div>
-                            <form id="imageForm" onSubmit={imageSubmit} >
-                                <label htmlFor="Image Description">Image Description</label>
-                                <input type="text" id="description" name="description" />
-                                <input id="files" name="files" type="file" multiple />
-                                <button type="submit">Upload</button>
-                            </form>
-                        </div>
+                    </div>
                     </>
             }
         </>
