@@ -10,7 +10,9 @@ async function getCarouselImages(callback) {
     carouselImageList = await fetch('http://localhost:3002/getcarouselimages');
     carouselImageOrder = await fetch('http://localhost:3002/getcarouselimageorder');
     carouselImageOrderArray = await carouselImageOrder.json();
-    carouselImageData = await carouselImageList.json();
+    //if (carouselImageData.length === 0) {
+        carouselImageData = await carouselImageList.json();
+    //}
     carouselSortedImages = [];
     for (let i = 0; i < carouselImageOrderArray.order.length; i++) {
         let imageId = carouselImageOrderArray.order[i];
@@ -22,10 +24,39 @@ async function getCarouselImages(callback) {
     }
     console.log(carouselSortedImages);
     //setLoading(false);
-    callback();
+    callback(false);
 }
 
 function LoginCarousel() {
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (loading === true) {
+            getCarouselImages(setLoading);
+        }
+    });
+
+    function carouselSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('carouseldescription');
+        const files = document.getElementById('carouselfiles');
+        const formData = new FormData();
+        formData.append('carouseldescription', name.value);
+        for(let i =0; i < files.files.length; i++) {
+            formData.append('carouselfiles', files.files[i]);
+        }
+        console.log(formData);
+        fetch('http://localhost:3002/uploadcarousel', {
+            method: 'POST',
+            body: formData,
+        })
+        .then((res) => {
+            console.log(res);
+            setLoading(true);
+        })
+        .catch((err) => ('Error: ' + err));
+    }
 
     function shiftBack(image) {
         const originalIndex = carouselSortedImages.indexOf(image);
@@ -90,18 +121,15 @@ function LoginCarousel() {
                 setLoading(true);
         });
     }
-            
-
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        if (loading === true) {
-            getCarouselImages(setLoading);
-        }
-    }, [loading]);
 
     return (
         <div>
+            <form id="carouselForm" onSubmit={carouselSubmit} >
+                <label htmlFor="carouseldescription">Carousel Image Description</label>
+                <input type="text" id="carouseldescription" name="carouseldescription" />
+                <input id="carouselfiles" name="carouselfiles" type="file" multiple />
+                <button type="submit">Upload</button>
+            </form>
             { loading ? 'Loading' : (
                 carouselSortedImages.map((image) => {
                     return (
