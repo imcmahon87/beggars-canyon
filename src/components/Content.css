@@ -1,4 +1,8 @@
-.galleryImage img {
+#content {
+    min-height: 30vh;
+}
+
+.loginGalleryImage img {
     width: 200px;
     height: 200px;
 }
@@ -28,6 +32,97 @@
 
 .loginContentTab:hover {
     background-color: rgba(255, 255, 255, 0.8);
+}
+
+.galleryImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5em;
+    width: 30%;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #CECECE;
+    padding: 1em;
+}
+
+#contactDiv {
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+}
+
+#contactForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#contactForm input {
+    width: 30%;
+    padding: 0.4em;
+}
+
+#contactForm textarea {
+    width: 40%;
+    padding: 1em;
+}
+
+.submitButton {
+    margin-top: 1em;
+}
+
+.formInputDiv {
+    width: 100%;
+}
+
+#imageGallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 1em 1em;
+}
+
+#imageGallery img {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+#selectedImageContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 600;
+}
+
+#selectedImage {
+    padding: 1em;
+    background-color: #CECECE;
+    border-radius: 20px;
+}
+
+#closeIcon {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#closeIconHeader {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1em;
 }
 
 @media only screen and (max-width: 600px) {

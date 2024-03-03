@@ -5,6 +5,7 @@ import ContentMain from './components/ContentMain';
 import ContentReleases from './components/ContentReleases';
 import ContentGallery from './components/ContentGallery';
 import ContentContact from './components/ContentContact';
+import iconClose from './assets/images/icon-close.png';
 
 function App(props) {
     // Pass a header name and page content into the title/content components
@@ -28,6 +29,11 @@ function App(props) {
     useEffect(() => {
         setTimeout(()=>setShow(true), 1);
     }, [])
+
+    function closeImage() {
+        let wrapper = document.getElementById('selectedImageContainer');
+        wrapper.style.display = 'none';
+    }
 
     return (
         <div id="page">
@@ -64,6 +70,15 @@ function App(props) {
             >
                 <div>{pageContent}</div>
             </CSSTransition>
+            <div id="selectedImageContainer">
+                <div id="selectedImage">
+                    <div id="closeIconHeader">
+                        <img id="closeIcon" src={iconClose}
+                             onClick={closeImage} />
+                    </div>
+                    <img id="largeImage" src={iconClose} />
+                </div>
+            </div>
         </div>
     );
 }

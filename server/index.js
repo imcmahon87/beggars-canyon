@@ -5,6 +5,9 @@ const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const nodemailer = require('nodemailer');
+require('dotenv').config({ path: '../.env.local' });
+
 
 const app = express();
 const PORT = 3002;
@@ -17,6 +20,15 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.dreamhost.com',
+    port: 587,
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
+    }
+});
 
 let loggedIn = false;
 
@@ -64,6 +76,32 @@ const uploadCarousel = multer({
 });
 
 // Get / Post Requests
+
+app.post('/submitmessage', (req, res) => {
+    let data = req.body;
+    const mail = {
+        from: data.name,
+        to: process.env.EMAIL,
+        subject: 'New Message from BeggarsCanyon.com',
+        text: `${data.name} <${data.email}> \n${data.message}`
+    };
+    transporter.sendMail(mail, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Something went wrong');
+        } else {
+            console.log('email successfully sent');
+            res.status(200).send('Email successfully sent!');
+        }
+    });
+    /*transporter.verify((error, success) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Server is ready to take messages');
+        }
+    });*/
+});
 
 app.get('/getShows', (req, res) => {
     db.query('SELECT ShowId, DATE_FORMAT(Date, "%W, %M %e") as Date, TIME_FORMAT(Time, "%l:%i %p") as Time, Venue, City, State \
@@ -379,7 +417,7 @@ app.post('/deletecarousel', (req, res) => {
     });
 
     // Delete file on filesystem
-    fs.unlink('../public/' + imageFile, function(err) {
+    fs.unlink('../public/carousel/' + imageFile, function(err) {
         if(err && err.code == 'ENOENT') {
             // file doens't exist
             console.info("File doesn't exist, won't remove it.");
@@ -407,7 +445,7 @@ app.post('/deleteimage', (req, res) => {
     const imageId = imageData.ImageId;
     const imageFile = imageData.File;
 
-    // Update carousel.json
+    // Update images.json
     fs.readFile('./images.json', 'utf8', (err, jsonString) => {
         if (err) {
             console.log('File read error', err);
@@ -432,7 +470,7 @@ app.post('/deleteimage', (req, res) => {
     });
 
     // Delete file on filesystem
-    fs.unlink('../public/' + imageFile, function(err) {
+    fs.unlink('../public/gallery/' + imageFile, function(err) {
         if(err && err.code == 'ENOENT') {
             // file doens't exist
             console.info("File doesn't exist, won't remove it.");

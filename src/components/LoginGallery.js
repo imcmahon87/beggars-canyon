@@ -131,7 +131,7 @@ function LoginGallery() {
             { loading ? 'Loading' : (
                 sortedImages.map((image) => {
                     return (
-                        <div key={image.ImageId} className="galleryImage">
+                        <div key={image.ImageId} className="loginGalleryImage">
                             <img src={'http://localhost:3000/beggarscanyon/gallery/' + image.File} />
                             <button onClick={() => {shiftBack(image)}}>-</button>
                             <button onClick={() => {shiftForward(image)}}>+</button>
