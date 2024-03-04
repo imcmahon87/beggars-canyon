@@ -125,11 +125,83 @@
     margin-bottom: 1em;
 }
 
+.infoDiv {
+    width: 40%;
+    padding: 2em 2em;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+.showDiv {
+    margin: 1em auto;
+    padding: 1em 1em;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+.showDiv p {
+    padding: 0;
+    margin: 0;
+}
+
+.showDivWith {
+    width: 100%;
+    text-align: left;
+}
+
+.showDivWith p {
+    color: #4b4b4b;
+}
+
+.pageHeader {
+    width: 40%;
+    min-width: fit-content;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    z-index: 10;
+}
+
 @media only screen and (max-width: 600px) {
     #content {
         width: 100%;
-        margin-top: -1em;
+        margin-top: -3.5em;
+        padding: 1em;
     }
+
+    .pageHeader {
+        padding: 0;
+        margin: 2em auto;
+    }
+
+    .infoDiv {
+        width: 100%;
+        margin: 0 auto 1em auto;
+    }
+
+    #mainInfo {
+        padding: 0;
+        margin: 1em auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #mainInfo img {
+        width: 90%;
+    }
+
+    .showDivMain {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .showDiv {
+        width: 100%;
+    }
+
 }
 
 @media only screen and (min-width: 600px) {
@@ -151,12 +223,22 @@
         width: auto;
     }
 
+    .pageHeader {
+        padding: 2em 2em;
+        margin: 1em auto 2em auto;
+    }
+
     .infoDiv {
         margin-right: 3em;
-        width: 40%;
-        padding: 2em 2em;
-        background-color: rgba(255, 255, 255, 0.5);
-        border-radius: 20px;
+    }
+
+    .showDiv {
+        width: 80%;
+    }
+
+    .showDivMain {
+        display: flex;
+        justify-content: space-between;
     }
 
     .paragraphDiv {
@@ -165,33 +247,6 @@
         padding: 2em 2em;
         background-color: rgba(255, 255, 255, 0.5);
         border-radius: 20px;
-    }
-
-    .showDiv {
-        width: 80%;
-        margin: 1em auto;
-        padding: 1em 1em;
-        background-color: rgba(255, 255, 255, 0.5);
-        border-radius: 20px;
-    }
-
-    .showDiv p {
-        padding: 0;
-        margin: 0;
-    }
-
-    .showDivMain {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .showDivWith {
-        width: 100%;
-        text-align: left;
-    }
-
-    .showDivWith p {
-        color: #4b4b4b;
     }
 
     .releaseWrapper {
@@ -295,17 +350,5 @@
         color: #E2E2E2;
         line-height: 1.5em;
         width: 50%;
-    }
-
-    .pageHeader {
-        width: 40%;
-        padding: 2em 2em;
-        min-width: fit-content;
-        text-align: center;
-        margin: 1em auto 2em auto;
-        background-color: rgba(255, 255, 255, 0.5);
-        padding: 1em;
-        border-radius: 10px;
-        z-index: 10;
     }
 }

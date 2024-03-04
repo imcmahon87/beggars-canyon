@@ -20,32 +20,30 @@ function Header() {
         <div>
             <div id="headerMobile">
                 <Link to="/" className="anim-link" style={{ display: 'inline-block' }}>
-                <h4>beggars canyon</h4>
+                    <h4>beggars canyon</h4>
                 </Link>
-                <div id="menuMobile">
-                <Link to="/releases" className="anim-link">Releases</Link>
-                <Link to="/gallery" className="anim-link">Gallery</Link>
-                <Link to="/contact" className="anim-link">Contact</Link>
-                </div>
-                <img  id="menuButtonMobile"
+                <img id="menuButtonMobile"
                     src={menuButton}
                     onClick={mobileMenuPress}
                     alt="Mobile Menu Button" />
+                <div id="menuMobile">
+                    <Link to="/releases" className="anim-link">Releases</Link>
+                    <Link to="/gallery" className="anim-link">Gallery</Link>
+                    <Link to="/contact" className="anim-link">Contact</Link>
+                </div>
+                
             </div>
             <div id="headerDesktop">
-                <div id="headerDesktopWrapper">
-                    <div id="headerDesktopTop">
-                        <a target="_blank" href="https://www.facebook.com/beggarscanyonpdx"><img src={iconFacebook} /></a>
-                        <a target="_blank" href="https://www.instagram.com/beggars_canyon"><img src={iconInstagram} /></a>
-                        <a target="_blank" href="https://open.spotify.com/artist/4q6SYdyrRaHOxJfc2Uhmgn?si=vm7cuy2gSt6so_-LeeKCJA"><img src={iconSpotify} /></a>
-                    </div>
-                    <div id="headerDesktopBottom">
-                        <Link to="/" className="anim-link">Home</Link>
-                        <Link to="/releases" className="anim-link">Releases</Link>
-                        <Link to="/gallery" className="anim-link">Gallery</Link>
-                        <Link to="/contact" className="anim-link">Contact</Link>
-                    </div>
-
+                <div id="headerDesktopSocial">
+                    <a target="_blank" href="https://www.facebook.com/beggarscanyonpdx"><img src={iconFacebook} /></a>
+                    <a target="_blank" href="https://www.instagram.com/beggars_canyon"><img src={iconInstagram} /></a>
+                    <a target="_blank" href="https://open.spotify.com/artist/4q6SYdyrRaHOxJfc2Uhmgn?si=vm7cuy2gSt6so_-LeeKCJA"><img src={iconSpotify} /></a>
+                </div>
+                <div id="headerDesktopMain">
+                    <Link to="/" className="anim-link">Home</Link>
+                    <Link to="/releases" className="anim-link">Releases</Link>
+                    <Link to="/gallery" className="anim-link">Gallery</Link>
+                    <Link to="/contact" className="anim-link">Contact</Link>
                 </div>
             </div>
         </div>
