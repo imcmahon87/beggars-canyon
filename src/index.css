@@ -119,7 +119,7 @@ body {
   z-index: 0;
 }
 
-#headerMobile {
+#headerMobileWrapper {
   position: fixed;
   overflow: hidden;
   padding: 0.4em 1em;
@@ -130,71 +130,32 @@ body {
   z-index: 598;
 }
 
-#headerMobile a:link, #headerMobile a:visited, #headerMobile a:hover, #headerMobile a:active,
+#headerMobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#headerMobileWrapper a:link, #headerMobileWrapper a:visited, #headerMobileWrapper a:hover, #headerMobileWrapper a:active,
 #headerDesktop a:link, #headerDesktop a:visited, #headerDesktop a:hover, #headerDesktop a:active {
   display: block;
   text-decoration: none;
   color: #E2E2E2;
 }
 
-#headerMobile a {
+#menuButtonMobile {
+  /*display: inline;
+  position: relative;
+  right: -1.2em;
+  top: 0.7em;*/
+  width: 3em;
+  height: 3em;
+}
+
+#headerMobileWrapper a {
   color: #E2E2E2;
   font-family: 'Saira Condensed', sans-serif;
   font-size: 1.5em;
-}
-
-/*#headerDesktop {
-  padding: 1em 1em;
-  color: #E2E2E2;
-  display: block;
-  background-color: #1E1E1E;
-  width: 100%;
-  position: relative;
-  z-index: 598;
-}
-
-#headerDesktopWrapper {
-  z-index: 599;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 60%;
-  margin: 0 auto;
-}
-
-#headerDesktopBottom {
-  width: 60%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-#headerDesktopTop {
-  width: 25%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 1em 0;
-}*/
-
-#footer {
-  background-color: #1E1E1E;
-  width: 100%;
-}
-
-#footer p {
-  color: #FFFFFF;
-}
-
-#menuButtonMobile {
-  display: inline;
-  position: relative;
-  right: -1.2em;
-  top: 0.7em;
-  width: 3em;
-  height: 3em;
 }
 
 #menuMobile {
@@ -212,6 +173,15 @@ body {
   margin: 0.1em 1.3em;
 }
 
+#footer {
+  background-color: #1E1E1E;
+  width: 100%;
+}
+
+#footer p {
+  color: #FFFFFF;
+}
+
 @media only screen and (max-width: 600px) {
 
   h1 {
@@ -224,7 +194,7 @@ body {
   }
 
   #headerMobile {
-    display: block;
+    display: flex;
   }
 
   #headerDesktop {
@@ -245,6 +215,16 @@ body {
     height: auto;
   }
 
+}
+
+@media only screen and (max-width: 380px) {
+  h4 {
+    font-size: 1.3em;
+    margin-top: 0.5em;
+    padding: 0;
+    line-height: 0;
+    font-family: 'docktrin', sans-serif;
+  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -307,6 +287,36 @@ body {
     height: auto;
   }
 
+}
+
+@media only screen and (min-width: 600px) and (max-height: 500px) {
+  #headerDesktop {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    color: #E2E2E2;
+    background-color: #1E1E1E;
+    width: 100%;
+    position: relative;
+    z-index: 598;
+  }
+  
+  #headerDesktopMain {
+    display: flex;
+    width: fit-content;
+    margin: 1em;
+  }
+  
+  #headerDesktopSocial {
+    width: fit-content;
+    display: flex;
+    margin: 1em 2em;
+  }
+  
+  #headerDesktopSocial img {
+    width: 3em;
+    height: auto;
+  }
 }
 
 @media only screen and (min-width: 1200px) {

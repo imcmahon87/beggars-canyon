@@ -49,18 +49,20 @@ function ContentGallery() {
 
     return (
         <>
-            <div id="imageGallery">
-                { loading ? 'Loading' : (
-                    sortedImages.map((image) => {
-                        return (
-                            <div key={image.ImageId} className="galleryImage">
-                                <img src={'http://localhost:3000/beggarscanyon/gallery/' + image.File} 
-                                    onClick={() => {selectImage('http://localhost:3000/beggarscanyon/gallery/' + image.File);}} />
-                            </div>
+            <div id="content">
+                <div id="imageGallery">
+                    { loading ? 'Loading' : (
+                        sortedImages.map((image) => {
+                            return (
+                                <div key={image.ImageId} className="galleryImage">
+                                    <img src={'http://localhost:3000/beggarscanyon/gallery/' + image.File} 
+                                        onClick={() => {selectImage('http://localhost:3000/beggarscanyon/gallery/' + image.File);}} />
+                                </div>
+                            )
+                        })
                         )
-                    })
-                    )
-                }
+                    }
+                </div>
             </div>
             <Footer />
         </>

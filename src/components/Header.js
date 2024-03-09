@@ -18,20 +18,21 @@ function Header() {
 
     return (
         <div>
-            <div id="headerMobile">
-                <Link to="/" className="anim-link" style={{ display: 'inline-block' }}>
-                    <h4>beggars canyon</h4>
-                </Link>
-                <img id="menuButtonMobile"
-                    src={menuButton}
-                    onClick={mobileMenuPress}
-                    alt="Mobile Menu Button" />
-                <div id="menuMobile">
-                    <Link to="/releases" className="anim-link">Releases</Link>
-                    <Link to="/gallery" className="anim-link">Gallery</Link>
-                    <Link to="/contact" className="anim-link">Contact</Link>
+            <div id="headerMobileWrapper">
+                <div id="headerMobile">
+                    <Link to="/" className="anim-link" style={{ display: 'inline-block' }}>
+                        <h4>beggars canyon</h4>
+                    </Link>
+                    <img id="menuButtonMobile"
+                        src={menuButton}
+                        onClick={mobileMenuPress}
+                        alt="Mobile Menu Button" />
                 </div>
-                
+                <div id="menuMobile">
+                        <Link to="/releases" className="anim-link">Releases</Link>
+                        <Link to="/gallery" className="anim-link">Gallery</Link>
+                        <Link to="/contact" className="anim-link">Contact</Link>
+                </div>
             </div>
             <div id="headerDesktop">
                 <div id="headerDesktopSocial">
