@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import './Login.css';
+import { useState, useEffect } from 'react';
 import LoginCarousel from './LoginCarousel';
 import LoginShows from './LoginShows';
 import LoginGallery from './LoginGallery';
+import Footer from './Footer';
 
 let loggedIn = true;
 
@@ -14,6 +16,33 @@ function Login() {
 
     const [authenticated, setAuthenticated] = useState(loggedIn);
     const [content, setContent] = useState('shows');
+
+    useEffect(() => {
+        if (authenticated) {
+            if (content === 'shows') {
+                let tab = document.getElementById('tabShows');
+                tab.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+                tab = document.getElementById('tabGallery');
+                tab.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+                tab = document.getElementById('tabCarousel');
+                tab.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+            } else if (content === 'gallery') {
+                let tab = document.getElementById('tabShows');
+                tab.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+                tab = document.getElementById('tabGallery');
+                tab.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+                tab = document.getElementById('tabCarousel');
+                tab.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+            } else {
+                let tab = document.getElementById('tabShows');
+                tab.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+                tab = document.getElementById('tabGallery');
+                tab.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+                tab = document.getElementById('tabCarousel');
+                tab.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+            }
+        }
+    });
 
     fetch('http://localhost:3002/checkloggedin')
         .then(response => response.json())
@@ -61,35 +90,34 @@ function Login() {
     return (
         <>
             { authenticated ? (
-                <>
+                <div id="loginWrapper">
                     <button id="logoutButton" onClick={logout}>Logout</button>
                     <div id="loginContentHeader">
-                        <div className="loginContentTab" onClick={() => setContent('shows')} >
+                        <div id="tabShows" className="loginContentTab" onClick={() => setContent('shows')} >
                             <p>Shows</p>
                         </div>
-                        <div className="loginContentTab" onClick={() => setContent('gallery')} >
+                        <div id="tabGallery" className="loginContentTab" onClick={() => setContent('gallery')} >
                             <p>Gallery</p>
                         </div>
-                        <div className="loginContentTab" onClick={() => setContent('carousel')} >
+                        <div id="tabCarousel" className="loginContentTab" onClick={() => setContent('carousel')} >
                             <p>Carousel</p>
                         </div>
                     </div>
                     <div id="loginContent">
                         <LoginContent content={content} />
                     </div>
-                </>
-                ) : <>
-                        <form onSubmit={handleSubmit}>
-                        <label htmlFor="username">Username</label>
-                        <input type="text" id="username" onChange={(e) => setUser({...user, username: e.target.value})} />
-                        <label htmlFor="password">Password</label>
-                        <input type="password" id="password" onChange={(e) => setUser({...user, password: e.target.value})}  />
-                        <button type="submit">Submit</button>
+                </div>
+                ) : <div id="loginWrapper">
+                        <form id="loginForm" onSubmit={handleSubmit}>
+                            <label htmlFor="username">Username</label>
+                            <input type="text" id="username" onChange={(e) => setUser({...user, username: e.target.value})} />
+                            <label htmlFor="password">Password</label>
+                            <input type="password" id="password" onChange={(e) => setUser({...user, password: e.target.value})}  />
+                            <button type="submit">Submit</button>
                         </form>
-                        <div>
                     </div>
-                    </>
             }
+            <Footer />
         </>
     )
 }

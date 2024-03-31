@@ -1,19 +1,14 @@
 #carouselContainer {
+    margin: 0 auto;
     padding: 2em 0 1em 0;
-    height: 40em;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
 }
 
 #carousel {
-    height: 90%;
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
-}
-
-#carouselDots {
-    margin-top: 2em;
 }
 
 .carouselItem {
@@ -26,10 +21,70 @@
     transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
-.carouselDot {
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 0 0.2em;
+@media only screen and (max-width: 600px) {
+    #carouselContainer {
+        height: 20em;
+    }
+
+    #carousel {
+        height: 90%;
+    }
+
+    #carouselDots {
+        margin-top: 0.8em;
+    }
+
+    .carouselDot {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 0.5em;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #carouselContainer {
+        height: 30em;
+        width: 100%;
+    }
+
+    #carousel {
+        height: 90%;
+    }
+
+    #carouselDots {
+        margin: 1.5em 0 0 0;
+    }
+
+    .carouselDot {
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 0.3em;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #carouselContainer {
+        height: 40em;
+        width: 90%;
+    }
+
+    #carousel {
+        height: 90%;
+    }
+
+    #carouselDots {
+        margin-top: 2em;
+    }
+
+    .carouselDot {
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 0.2em;
+    }
 }

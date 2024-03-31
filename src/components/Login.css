@@ -1,0 +1,421 @@
+#loginWrapper {
+    min-height: 50vh;
+}
+
+#loginForm {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    padding: 1em 0 2em 0;
+}
+
+#loginForm input {
+    padding: 0.4em;
+}
+
+#loginForm button {
+    margin-top: 1em;
+}
+
+#imageForm {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+#imageForm input {
+    width: 100%;
+}
+
+#files, #carouselfiles {
+    text-align: center;
+    margin: 1em 0;
+}
+
+.loginGalleryImage {
+    margin: 0.5em;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+.loginGalleryImage img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 0.5em;
+}
+
+.loginGalleryImageBottom button, .loginCarouselImageBottom button {
+    margin: 0 0.2em;
+}
+
+.loginCarouselImage {
+    margin: 0.5em;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+.loginCarouselImage img {
+    margin-bottom: 0.5em;
+}
+
+#loginContent {
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0 0 20px 20px;
+}
+
+#loginContentHeader {
+    display: flex;
+}
+
+.loginContentTab {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px 20px 0 0;
+}
+
+.loginContentTab:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+#showForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+#showFormTop {
+    display: flex;
+}
+
+#showFormBottom {
+    display: flex;
+}
+
+.loginShowDiv {
+    margin: 1em auto;
+    padding: 1em 1em;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+.loginShowDiv p {
+    padding: 0;
+    margin: 0;
+}
+
+.showDivAdmin {
+    display: flex;
+}
+
+.showDivAdmin button {
+    background-color: #FF6666;
+}
+
+.showDivAdminPerformer {
+    display: flex;
+}
+
+.showDivAdminPerformer button {
+    background-color: #3385ff;
+}
+
+.deleteButton {
+    background-color: #FF6666;
+}
+
+.loginCarouselImage {
+    margin: 2em auto 0 auto;
+}
+
+.loginCarouselImage img {
+    width: 100%;
+    height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    #loginWrapper {
+        padding-top: 7em;
+        margin: -10em auto 0 auto;
+    }
+
+    #loginForm {
+        width: 90%;
+        margin-bottom: 2em;
+    }
+
+    #loginForm input {
+        width: 80%;
+    }
+
+    #loginContent {
+        width: 95%;
+        padding: 1em;
+    }
+
+    #loginContentHeader {
+        width: 95%;
+        justify-content: space-between;
+        margin: 2em auto 0 auto;
+    }
+
+    .loginShowDiv {
+        width: 95%;
+    }
+
+    .loginContentTab {
+        width: 30%;
+        margin: 0;
+        padding: 0 1em;
+    }
+
+    #showForm {
+        width: 80%;
+    }
+
+    #showFormTop {
+        flex-direction: column;
+    }
+    
+    #showFormBottom {
+        flex-direction: column;
+    }
+
+    #showForm button {
+        margin-top: 2em;
+    }
+
+    #imageForm {
+        width: 100%;
+    }
+
+    .showDivAdmin {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .showDivAdmin button {
+        width: fit-content;
+    }
+
+    .showDivAdminPerformer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .showDivAdminPerformer button {
+        margin: 1em 0;
+        width: fit-content;
+    }
+
+    #loginImageGallery {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .loginCarouselImage {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #loginWrapper {
+        padding-top: 5em;
+        margin: -10em auto 0 auto;
+    }
+
+    #loginForm {
+        width: 90%;
+    }
+
+    #loginForm input {
+        width: 60%;
+    }
+
+    #loginContent {
+        width: 95%;
+        padding: 3em 1em;
+    }
+
+    #loginContentHeader {
+        margin: 2em auto 0 auto;
+        justify-content: flex-start;
+        width: 95%;
+    }
+
+    #showForm {
+        width: 60%;
+    }
+
+    #showForm input {
+        margin: 0 auto;
+    }
+
+    #showForm button {
+        margin-top: 1em;
+    }
+
+    #showFormTop {
+        flex-direction: column;
+    }
+    
+    #showFormBottom {
+        flex-direction: column;
+    }
+
+    #imageForm {
+        width: 100%;
+    }
+
+    .loginContentTab {
+        width: 20%;
+        margin: 0 1em 0 0;
+        padding: 0 1em;
+    }
+
+    .loginShowDiv {
+        width: 100%;
+
+    }
+
+    .showDivAdmin {
+        margin-top: 1em;
+        justify-content: space-between;
+    }
+
+    .showDivAdminPerformer {
+        display: flex;
+        justify-content: flex-start;
+        width: 70%;
+    }
+
+    .showDivAdminPerformer button {
+        margin-left: 1em;
+    }
+
+    .showDivAdminPerformer input {
+        width: 50%;
+    }
+
+    #loginImageGallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 80%;
+        margin: 0 auto;
+        padding: 1em 1em;
+    }
+
+    .loginCarouselImage {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    #loginForm {
+        width: 70%;
+    }
+    
+    #loginForm input {
+        width: 50%;
+    }
+
+    #showForm input {
+        margin: 0 2em 0 0.5em;
+    }
+
+    .loginContentTab {
+        width: 18%;
+        margin: 0 1em 0 0;
+        padding: 0 1em;
+    }
+
+    .showDivAdminPerformer {
+        width: 70%;
+    }
+
+    #showFormBottom {
+        margin: 1em auto;
+    }
+
+    #imageForm {
+        width: 70%;
+    }
+
+    .loginCarouselImage {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #loginWrapper {
+        margin: -12em auto 0 auto;
+    }
+
+    #loginForm {
+        width: 50%;
+    }
+
+    #loginForm input {
+        width: 60%;
+    }
+
+    #loginContent {
+        width: 80%;
+        padding: 3em 1em;
+    }
+
+    #loginContentHeader {
+        width: 80%;
+    }
+
+    #showForm h3 {
+        margin-bottom: 1em;
+    }
+
+    #showForm {
+        width: 80%;
+    }
+
+    #showFormTop {
+        flex-direction: row;
+    }
+    
+    #showFormBottom {
+        flex-direction: row;
+    }
+
+    #imageForm {
+        width: 70%;
+    }
+
+    #imageForm input {
+        width: 80%;
+    }
+    
+    .loginContentTab {
+        width: 15%;
+        margin: 0 1em 0 0;
+        padding: 0 1em;
+    }
+}

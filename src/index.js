@@ -7,7 +7,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import App from './App';
-import Login from './components/Login';
 import Header from './components/Header';
 
 // Store window dimensions so we know which images we're waiting to load
@@ -35,23 +34,55 @@ if (windowWidth > 900) {
   imageContentTile = require('./assets/images/foreground-tile-mobile.png');
 }
 
-
 function Index() {
-  const [loadingInProgress, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
+
+  /*setTimeout(() => {
+    if (loading === true) {
+      setLoading(false);
+      onLoaded();
+    }
+  }, 6000);*/
+
+  // Variables to track loading
+  let imageCounter = 0;
+  let fontCounter = 0;
+  let isFontLoaded = false;
+
+
+  // Preload the header font
+  document.fonts.onloadingdone = () => {
+    fontCounter++;
+    console.log('font loaded: ' + fontCounter);
+    if (fontCounter > 0) {
+      if (imageCounter >= preloadImages.length) {
+        if (loading === true) {
+          setLoading(false);
+          onLoaded();
+        }
+      }
+    }
+  };
+
 
   // Preload the background images, and only then set 'loading' to false and call onLoaded()
   // (This prevents the animation from starting until the images are loaded)
   const preloadImages = [imageBackground, imageHillLeft, imageHillRight, imageTrees, imageContentTile];
-  let imageCounter = 0;
+
   for (let i = 0; i < preloadImages.length; i++) {
     let image = new Image();
     image.src = preloadImages[i];
     image.addEventListener('load', () => {
       imageCounter += 1;
+      console.log(imageCounter);
       if (imageCounter >= preloadImages.length) {
-        setLoading(false);
-        onLoaded();
+        if (isFontLoaded === true) {
+          if (loading === true) {
+            setLoading(false);
+            onLoaded();
+          }
+        }
       }
     });
   };
@@ -68,7 +99,7 @@ function Index() {
     });
     document.addEventListener('click', () => {
         if (mouseMenuArea === false) {
-            document.getElementById('menuMobile').style.display = 'none';
+            document.getElementById('menuMobile').style.maxHeight = null;
         }
     });
       
@@ -76,7 +107,9 @@ function Index() {
     const menuLinks = document.getElementsByClassName('anim-link');
     for (let i = 0; i < menuLinks.length; i++) {
       menuLinks[i].addEventListener('click', () => {
-        document.getElementById('menuMobile').style.display = 'none';
+        let panel = document.getElementById('menuMobile');
+        //document.getElementById('menuMobile').style.display = 'none';
+        panel.style.maxHeight = null;
         window.scrollTo(0, 0);
       });
     }
@@ -84,7 +117,7 @@ function Index() {
 
   return (
     <div id="wrapper">
-      {loadingInProgress ? (
+      {loading ? (
         <div className="loader-container">
           <ClipLoader color={'#fff'} size={150} />
         </div>
@@ -98,7 +131,7 @@ function Index() {
                 <Route path="/releases" element={<App route="releases"/>} />
                 <Route path="/gallery" element={<App route="gallery" />} />
                 <Route path="/contact" element={<App route="contact" />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<App route="login" />} />
               </Routes>
             </CSSTransition>
           </SwitchTransition>

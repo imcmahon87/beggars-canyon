@@ -52,7 +52,7 @@ function LoginShows() {
         if (loading === true) {
             getShows(setLoading);
         }
-    });
+    }, [loading]);
 
     function addShow(e) {
         e.preventDefault();
@@ -139,22 +139,27 @@ function LoginShows() {
     return (
         <>
             <form id="showForm" onSubmit={addShow}>
-                <label htmlFor="date">Date</label>
-                <input type="date" id="date" name="date" required />
-                <label htmlFor="time">Time</label>
-                <input type="time" id="time" name="time" />
-                <label htmlFor="venue">Venue</label>
-                <input type="text" id="venue" name="venue" required />
-                <label htmlFor="venue">City</label>
-                <input type="text" id="city" name="city" required />
-                <label htmlFor="venue">State</label>
-                <input type="text" id="state" name="state" required />
+                <h3>Add Show</h3>
+                <div id="showFormTop">
+                    <label htmlFor="date">Date</label>
+                    <input type="date" id="date" name="date" required />
+                    <label htmlFor="time">Time</label>
+                    <input type="time" id="time" name="time" />
+                    <label htmlFor="venue">Venue</label>
+                    <input type="text" id="venue" name="venue" required />
+                </div>
+                <div id="showFormBottom">
+                    <label htmlFor="venue">City</label>
+                    <input type="text" id="city" name="city" required />
+                    <label htmlFor="venue">State</label>
+                    <input type="text" id="state" name="state" required />
+                </div>
                 <button type="submit">Add show</button>
             </form>
             {loading ? (<p>Loading</p>) : (
                 displayData.map((show) => {
                     return (
-                        <div key={show.ShowId} className="showDiv">
+                        <div key={show.ShowId} className="loginShowDiv">
                             <div className="showDivMain">
                                 <span>
                                     <p>{show.Date}</p>
@@ -169,16 +174,20 @@ function LoginShows() {
                             <div className="showDivWith">
                                 <p>{show.Other}</p>
                             </div>
-                            <button onClick={() => { deleteShow(show.ShowId, show.Other); }}>Delete Show</button>
-                            <input type="text" id={'newPerformer' + show.ShowId} name={'newPerformer' + show.ShowId} />
-                            <button onClick={() => { addPerformer(show.ShowId, 
-                                                    document.getElementById('newPerformer' + show.ShowId).value) }}
-                                                    >Add Performer</button>
+                            <div className="showDivAdmin">
+                                <div className="showDivAdminPerformer">
+                                    <input type="text" id={'newPerformer' + show.ShowId} name={'newPerformer' + show.ShowId} />
+                                    <button onClick={() => { addPerformer(show.ShowId, 
+                                                            document.getElementById('newPerformer' + show.ShowId).value) }}
+                                                            >Add Performer</button>
+                                </div>
+                                <button onClick={() => { deleteShow(show.ShowId, show.Other); }}>Delete Show</button>
+                            </div>
                         </div>
                     )
                 })
             )}
-            { noShows ? <div className="showDiv"><p>There are no shows currently scheduled</p></div> : 
+            { noShows ? <div className="loginShowDiv"><p>There are no shows currently scheduled</p></div> : 
                         <></> }
         </>
     );

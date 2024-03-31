@@ -36,7 +36,7 @@ function ContentGallery() {
         if (loading === true) {
             getImages(setLoading);
         }
-    });
+    }, [loading]);
 
     function selectImage(src) {
         let wrapper = document.getElementById('selectedImageContainer');
@@ -56,7 +56,9 @@ function ContentGallery() {
                             return (
                                 <div key={image.ImageId} className="galleryImage">
                                     <img src={'http://localhost:3000/beggarscanyon/gallery/' + image.File} 
-                                        onClick={() => {selectImage('http://localhost:3000/beggarscanyon/gallery/' + image.File);}} />
+                                         onClick={() => {selectImage('http://localhost:3000/beggarscanyon/gallery/' + image.File);}}
+                                         alt={image.Description}
+                                    />
                                 </div>
                             )
                         })

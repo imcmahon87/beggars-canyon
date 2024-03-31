@@ -418,7 +418,7 @@ app.post('/deletecarousel', (req, res) => {
 
     // Delete file on filesystem
     fs.unlink('../public/carousel/' + imageFile, function(err) {
-        if(err && err.code == 'ENOENT') {
+        if(err && err.code === 'ENOENT') {
             // file doens't exist
             console.info("File doesn't exist, won't remove it.");
         } else if (err) {
@@ -471,7 +471,7 @@ app.post('/deleteimage', (req, res) => {
 
     // Delete file on filesystem
     fs.unlink('../public/gallery/' + imageFile, function(err) {
-        if(err && err.code == 'ENOENT') {
+        if(err && err.code === 'ENOENT') {
             // file doens't exist
             console.info("File doesn't exist, won't remove it.");
         } else if (err) {

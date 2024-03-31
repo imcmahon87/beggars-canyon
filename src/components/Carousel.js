@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Carousel.css';
-import testPic from '../assets/images/test-pic.jpg';
-import testPic2 from '../assets/images/new-album.jpg';
 
-let carouselData = [];
 let carouselImages = [];
 let carouselImageOrder = [];
-let carouselOrderArray = [];
 let sortedCarousel = [];
 let carouselItems = [];
 
@@ -72,7 +68,10 @@ function Carousel() {
                     sortedCarousel.map((image) => {
                         return (
                             <div key={image.ImageId} className="carouselItem" style={{transform: `translate(-${currentItem * 100}%)`}}>
-                                <img src={'http://localhost:3000/beggarscanyon/carousel/' + image.File} style={{height: '100%', width: 'auto'}} />
+                                <img src={'http://localhost:3000/beggarscanyon/carousel/' + image.File}
+                                     style={{height: '100%', width: 'auto'}}
+                                     alt={image.Description}
+                                />
                             </div>
                         )})
                 ) : <p>Loading</p>

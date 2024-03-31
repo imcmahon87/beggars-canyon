@@ -35,7 +35,7 @@ function LoginCarousel() {
         if (loading === true) {
             getCarouselImages(setLoading);
         }
-    });
+    }, [loading]);
 
     function carouselSubmit(e) {
         e.preventDefault();
@@ -124,25 +124,32 @@ function LoginCarousel() {
 
     return (
         <div>
-            <form id="carouselForm" onSubmit={carouselSubmit} >
+            <form id="imageForm" onSubmit={carouselSubmit} >
+                <h3>Add Slide</h3>
                 <label htmlFor="carouseldescription">Carousel Image Description</label>
-                <input type="text" id="carouseldescription" name="carouseldescription" />
-                <input id="carouselfiles" name="carouselfiles" type="file" multiple />
+                <input type="text" id="carouseldescription" name="carouseldescription" required />
+                <input id="carouselfiles" name="carouselfiles" type="file" multiple required />
                 <button type="submit">Upload</button>
             </form>
-            { loading ? 'Loading' : (
-                carouselSortedImages.map((image) => {
-                    return (
-                        <div key={image.ImageId} className="galleryImage">
-                            <img src={'http://localhost:3000/beggarscanyon/carousel/' + image.File} />
-                            <button onClick={() => {shiftBack(image)}}>-</button>
-                            <button onClick={() => {shiftForward(image)}}>+</button>
-                            <button onClick={() => {deleteCarouselImage(image)}}>Delete</button>
-                        </div>
+            <div id="loginImageCarousel">
+                { loading ? 'Loading' : (
+                    carouselSortedImages.map((image) => {
+                        return (
+                            <div key={image.ImageId} className="loginCarouselImage">
+                                <img src={'http://localhost:3000/beggarscanyon/carousel/' + image.File}
+                                     alt={image.Description}
+                                />
+                                <div className="loginCarouselImageBottom">
+                                    <button onClick={() => {shiftBack(image)}}>-</button>
+                                    <button onClick={() => {shiftForward(image)}}>+</button>
+                                    <button className="deleteButton" onClick={() => {deleteCarouselImage(image)}}>Delete</button>
+                                </div>
+                            </div>
+                        )
+                    })
                     )
-                })
-                )
-            }
+                }
+            </div>
         </div>
     );
 }

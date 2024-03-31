@@ -5,6 +5,7 @@ import ContentMain from './components/ContentMain';
 import ContentReleases from './components/ContentReleases';
 import ContentGallery from './components/ContentGallery';
 import ContentContact from './components/ContentContact';
+import Login from './components/Login';
 import iconClose from './assets/images/icon-close.png';
 
 function App(props) {
@@ -20,6 +21,9 @@ function App(props) {
     } else if (props.route === 'contact') {
         pageContent = <ContentContact />;
         headerContent = <h1>contact us</h1>;
+    } else if (props.route === 'login') {
+        pageContent = <Login />;
+        headerContent = <h1>admin</h1>;
     } else {
         pageContent = <ContentMain />
         headerContent = <h1>beggars canyon</h1>;
@@ -74,9 +78,11 @@ function App(props) {
                 <div id="selectedImage">
                     <div id="closeIconHeader">
                         <img id="closeIcon" src={iconClose}
-                             onClick={closeImage} />
+                             onClick={closeImage}
+                             alt="Close Icon"
+                        />
                     </div>
-                    <img id="largeImage" src={iconClose} />
+                    <img id="largeImage" src="" alt="" />
                 </div>
             </div>
         </div>

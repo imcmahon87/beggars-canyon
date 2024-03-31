@@ -5,6 +5,7 @@ let imageData = [];
 let imageOrder = [];
 let imageOrderArray = [];
 let sortedImages = [];
+let galleryHeight = 0;
 
 async function getImages(callback) {
     console.log('getting images');
@@ -35,7 +36,7 @@ function LoginGallery() {
         if (loading === true) {
             getImages(setLoading);
         }
-    });
+    }, [loading]);
 
     function imageSubmit(e) {
         e.preventDefault();
@@ -60,6 +61,11 @@ function LoginGallery() {
     }
 
     function shiftBack(image) {
+        // Make image gallery wrapper stay the same height while loading so the view doesn't jump up to the top
+        const wrapper = document.getElementById('loginImageGallery');
+        galleryHeight = wrapper.offsetHeight;
+        wrapper.style.minHeight = galleryHeight + 'px';
+
         const originalIndex = sortedImages.indexOf(image);
         if (originalIndex > 0) {
             let element = imageOrderArray.order[originalIndex];
@@ -81,6 +87,11 @@ function LoginGallery() {
     }
 
     function shiftForward(image) {
+        // Make image gallery wrapper stay the same height while loading so the view doesn't jump up to the top
+        const wrapper = document.getElementById('loginImageGallery');
+        galleryHeight = wrapper.offsetHeight;
+        wrapper.style.minHeight = galleryHeight + 'px';
+
         const originalIndex = sortedImages.indexOf(image);
         if (originalIndex < sortedImages.length - 1) {
             let element = imageOrderArray.order[originalIndex];
@@ -123,24 +134,31 @@ function LoginGallery() {
     return (
         <div>
             <form id="imageForm" onSubmit={imageSubmit} >
-                            <label htmlFor="Image Description">Image Description</label>
-                            <input type="text" id="description" name="description" />
-                            <input id="files" name="files" type="file" multiple />
-                            <button type="submit">Upload</button>
+                <h3>Add Image</h3>
+                <label htmlFor="Image Description">Image Description</label>
+                <input type="text" id="description" name="description" />
+                <input id="files" name="files" type="file" multiple />
+                <button type="submit">Upload</button>
             </form>
-            { loading ? 'Loading' : (
-                sortedImages.map((image) => {
-                    return (
-                        <div key={image.ImageId} className="loginGalleryImage">
-                            <img src={'http://localhost:3000/beggarscanyon/gallery/' + image.File} />
-                            <button onClick={() => {shiftBack(image)}}>-</button>
-                            <button onClick={() => {shiftForward(image)}}>+</button>
-                            <button onClick={() => {deleteImage(image)}}>Delete</button>
-                        </div>
+            <div id="loginImageGallery">
+                { loading ? 'Loading' : (
+                    sortedImages.map((image) => {
+                        return (
+                            <div key={image.ImageId} className="loginGalleryImage">
+                                <img src={'http://localhost:3000/beggarscanyon/gallery/' + image.File}
+                                     alt={image.Description}
+                                />
+                                <div className="loginGalleryImageBottom">
+                                    <button onClick={() => {shiftBack(image)}}>-</button>
+                                    <button onClick={() => {shiftForward(image)}}>+</button>
+                                    <button className="deleteButton" onClick={() => {deleteImage(image)}}>Delete</button>
+                                </div>
+                            </div>
+                        )
+                    })
                     )
-                })
-                )
-            }
+                }
+            </div>
         </div>
     );
 }

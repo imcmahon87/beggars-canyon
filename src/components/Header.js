@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import menuButton from '../assets/images/menu-button-mobile.png';
 import iconFacebook from '../assets/images/icon-facebook.png';
@@ -6,15 +7,32 @@ import iconSpotify from '../assets/images/icon-spotify.png';
 
 function Header() {
 
+    useEffect(() => {
+        let acc = document.getElementById('menuButtonMobile');
+        console.log('now clickable');
+        acc.addEventListener('click', () => {
+            let panel = document.getElementById('menuMobile');
+            console.log(panel);
+    
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }, []);
+    
+    /*
     // Show/hide mobile accordion menu
     function mobileMenuPress() {
         var x = document.getElementById('menuMobile');
-        if (x.style.display === 'block') {
-            x.style.display = 'none';
-        } else {
+        if (x.style.display === 'none') {
             x.style.display = 'block';
+        } else {
+            x.style.display = 'none';
         }
-      }
+      }*/
+      
 
     return (
         <div>
@@ -25,7 +43,6 @@ function Header() {
                     </Link>
                     <img id="menuButtonMobile"
                         src={menuButton}
-                        onClick={mobileMenuPress}
                         alt="Mobile Menu Button" />
                 </div>
                 <div id="menuMobile">

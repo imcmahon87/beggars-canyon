@@ -3,6 +3,7 @@ import './Content.css';
 import Carousel from './Carousel';
 import Footer from './Footer';
 import bandPhoto from '../assets/images/band-photo.jpg';
+import flailLogo from '../assets/images/flail-records.png';
 
 let showData = [];
 let performerData = [];
@@ -69,7 +70,9 @@ function ContentMain() {
                             to to be their friend.
                         </p>
                     </div>
-                    <img src={bandPhoto} />
+                    <div className="photoDiv">
+                        <img src={bandPhoto} alt="Band Members" />
+                    </div>
                 </div>
                 <div className="pageHeader">
                     <h2>Upcoming Shows</h2>
@@ -97,8 +100,11 @@ function ContentMain() {
                     })
                 )
                 }
-                { noShows ? <div className="showDiv"><p>There are no shows currently scheduled</p></div> : 
+                { noShows ? <div className="showDiv"><p>There are no shows currently scheduled, but please check back soon!</p></div> : 
                             <></> }
+                <a href="https://flailrecords.com/" target="_blank" rel="noreferrer" >
+                    <img id="flailLogo" src={flailLogo} alt="Flail Logo"/>
+                </a>
             </div>
             <Footer />
         </>

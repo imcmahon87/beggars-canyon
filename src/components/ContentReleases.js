@@ -847,7 +847,7 @@ function ContentReleases() {
                             </div>
                             <div className="releaseDetails">
                                 <div className="releaseTrack">
-                                    <h5>Click for lyrics</h5>
+                                    <h5>Display Lyrics</h5>
                                 </div>
                                 <div className="trackLyrics singleLyrics">
                                     <p>
@@ -905,7 +905,7 @@ function ContentReleases() {
                             </div>
                             <div className="releaseDetails">
                                 <div className="releaseTrack">
-                                    <h5>Click for lyrics</h5>
+                                    <h5>Display Lyrics</h5>
                                 </div>
                                 <div className="trackLyrics singleLyrics">
                                     <p>
@@ -954,7 +954,7 @@ function ContentReleases() {
                             </div>
                             <div className="releaseDetails">
                                 <div className="releaseTrack">
-                                    <h5>Click for lyrics</h5>
+                                    <h5>Display Lyrics</h5>
                                 </div>
                                 <div className="trackLyrics singleLyrics">
                                     <p>
@@ -1008,7 +1008,7 @@ function ContentReleases() {
                             </div>
                             <div className="releaseDetails">
                                 <div className="releaseTrack">
-                                    <h5>Click for lyrics</h5>
+                                    <h5>Display Lyrics</h5>
                                 </div>
                                 <div className="trackLyrics singleLyrics">
                                     <p>
@@ -1053,7 +1053,7 @@ function ContentReleases() {
                             </div>
                             <div className="releaseDetails">
                                 <div className="releaseTrack">
-                                    <h5>Click for lyrics</h5>
+                                    <h5>Display Lyrics</h5>
                                 </div>
                                 <div className="trackLyrics singleLyrics">
                                     <p>
@@ -1085,7 +1085,7 @@ function ContentReleases() {
                             </div>
                             <div className="releaseDetails">
                                 <div className="releaseTrack">
-                                    <h5>Click for lyrics</h5>
+                                    <h5>Display Lyrics</h5>
                                 </div>
                                 <div className="trackLyrics singleLyrics">
                                     <p>
