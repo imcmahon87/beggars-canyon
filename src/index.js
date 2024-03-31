@@ -48,7 +48,6 @@ function Index() {
   // Variables to track loading
   let imageCounter = 0;
   let fontCounter = 0;
-  let isFontLoaded = false;
 
 
   // Preload the header font
@@ -77,7 +76,7 @@ function Index() {
       imageCounter += 1;
       console.log(imageCounter);
       if (imageCounter >= preloadImages.length) {
-        if (isFontLoaded === true) {
+        if (fontCounter > 0) {
           if (loading === true) {
             setLoading(false);
             onLoaded();
