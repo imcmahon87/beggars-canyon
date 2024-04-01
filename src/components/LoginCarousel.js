@@ -7,8 +7,8 @@ let carouselImageOrderArray = [];
 let carouselSortedImages = [];
 
 async function getCarouselImages(callback) {
-    carouselImageList = await fetch('http://localhost:3002/getcarouselimages');
-    carouselImageOrder = await fetch('http://localhost:3002/getcarouselimageorder');
+    carouselImageList = await fetch('https://www.iancomposer.com:3002/getcarouselimages');
+    carouselImageOrder = await fetch('https://www.iancomposer.com:3002/getcarouselimageorder');
     carouselImageOrderArray = await carouselImageOrder.json();
     //if (carouselImageData.length === 0) {
         carouselImageData = await carouselImageList.json();
@@ -47,7 +47,7 @@ function LoginCarousel() {
             formData.append('carouselfiles', files.files[i]);
         }
         console.log(formData);
-        fetch('http://localhost:3002/uploadcarousel', {
+        fetch('https://www.iancomposer.com:3002/uploadcarousel', {
             method: 'POST',
             body: formData,
         })
@@ -69,7 +69,7 @@ function LoginCarousel() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(carouselImageOrderArray)
             };
-            fetch('http://localhost:3002/updatecarouselorder', requestOptions)
+            fetch('https://www.iancomposer.com:3002/updatecarouselorder', requestOptions)
                 .then(response => response.json())
                 .then(data => {
                     setLoading(true);
@@ -94,7 +94,7 @@ function LoginCarousel() {
                 body: JSON.stringify(carouselImageOrderArray)
             };
 
-            fetch('http://localhost:3002/updatecarouselorder', requestOptions)
+            fetch('https://www.iancomposer.com:3002/updatecarouselorder', requestOptions)
                 .then(response => response.json())
                 .then(data => {
                     setLoading(true);
@@ -115,7 +115,7 @@ function LoginCarousel() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(imageData)
         };
-        fetch('http://localhost:3002/deletecarousel', requestOptions)
+        fetch('https://www.iancomposer.com:3002/deletecarousel', requestOptions)
             .then(response => response.json())
             .then(data => {
                 setLoading(true);
@@ -136,7 +136,7 @@ function LoginCarousel() {
                     carouselSortedImages.map((image) => {
                         return (
                             <div key={image.ImageId} className="loginCarouselImage">
-                                <img src={'http://localhost:3000/beggarscanyon/carousel/' + image.File}
+                                <img src={'https://www.iancomposer.com/beggarscanyon/carousel/' + image.File}
                                      alt={image.Description}
                                 />
                                 <div className="loginCarouselImageBottom">

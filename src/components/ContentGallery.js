@@ -9,8 +9,8 @@ let sortedImages = [];
 
 async function getImages(callback) {
     console.log('getting images');
-    imageList = await fetch('http://localhost:3002/getimages');
-    imageOrder = await fetch('http://localhost:3002/getimageorder');
+    imageList = await fetch('https://www.iancomposer.com:3002/getimages');
+    imageOrder = await fetch('https://www.iancomposer.com:3002/getimageorder');
     imageOrderArray = await imageOrder.json();
     //if (imageData.length === 0) {
         imageData = await imageList.json();
@@ -55,8 +55,8 @@ function ContentGallery() {
                         sortedImages.map((image) => {
                             return (
                                 <div key={image.ImageId} className="galleryImage">
-                                    <img src={'http://localhost:3000/beggarscanyon/gallery/' + image.File} 
-                                         onClick={() => {selectImage('http://localhost:3000/beggarscanyon/gallery/' + image.File);}}
+                                    <img src={'https://www.iancomposer.com/beggarscanyon/gallery/' + image.File} 
+                                         onClick={() => {selectImage('https://www.iancomposer.com/beggarscanyon/gallery/' + image.File);}}
                                          alt={image.Description}
                                     />
                                 </div>

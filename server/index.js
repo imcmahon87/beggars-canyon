@@ -8,6 +8,11 @@ const fs = require('fs');
 const nodemailer = require('nodemailer');
 require('dotenv').config({ path: '../.env.local' });
 
+// For production/SSL
+var https = require('https');
+var privateKey  = fs.readFileSync('./server.key', 'utf8');
+var certificate = fs.readFileSync('./server.crt', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
 
 const app = express();
 const PORT = 3002;
@@ -46,14 +51,14 @@ const checkFileType = function (file, cb) {
 };
 
 const storageEngineGallery = multer.diskStorage({
-    destination: "../public/gallery",
+    destination: "../gallery",
     filename: (req, file, cb) => {
         cb(null, `${Date.now()}-${file.originalname}`);
     },
 });
 
 const storageEngineCarousel = multer.diskStorage({
-    destination: "../public/carousel",
+    destination: "../carousel",
     filename: (req, file, cb) => {
         cb(null, `${Date.now()}-${file.originalname}`);
     },
@@ -73,6 +78,12 @@ const uploadCarousel = multer({
     fileFilter: (req, file, cb) => {
         checkFileType(file, cb);
     }
+});
+
+var httpsServer = https.createServer(credentials, app);
+
+httpsServer.listen(PORT, () => {
+    console.log('Beggars canyon server running on port ' + PORT);
 });
 
 // Get / Post Requests
@@ -417,7 +428,7 @@ app.post('/deletecarousel', (req, res) => {
     });
 
     // Delete file on filesystem
-    fs.unlink('../public/carousel/' + imageFile, function(err) {
+    fs.unlink('../carousel/' + imageFile, function(err) {
         if(err && err.code === 'ENOENT') {
             // file doens't exist
             console.info("File doesn't exist, won't remove it.");
@@ -470,7 +481,7 @@ app.post('/deleteimage', (req, res) => {
     });
 
     // Delete file on filesystem
-    fs.unlink('../public/gallery/' + imageFile, function(err) {
+    fs.unlink('../gallery/' + imageFile, function(err) {
         if(err && err.code === 'ENOENT') {
             // file doens't exist
             console.info("File doesn't exist, won't remove it.");
@@ -547,7 +558,7 @@ app.get('/logout', function (req, res) {
     return res.send('logged out');
 });
 
-
+/*
 app.listen(PORT, () => {
     console.log('Server is running on port ' + PORT);
-});
+});*/

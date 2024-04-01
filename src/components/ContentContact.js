@@ -13,7 +13,7 @@ function ContentContact() {
             email: formData.get('email'),
             message: formData.get('message')
         };
-        fetch('http://localhost:3002/submitmessage', {
+        fetch('https://www.iancomposer.com:3002/submitmessage', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: submission.name, email: submission.email, message: submission.message})

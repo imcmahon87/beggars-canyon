@@ -12,8 +12,8 @@ let displayData = [];
 let noShows = 0;
 
 async function getShows(callback) {
-    const showResponse = await fetch('http://localhost:3002/getShows');
-    const performerResponse = await fetch('http://localhost:3002/getPerformers');
+    const showResponse = await fetch('https://www.iancomposer.com:3002/getShows');
+    const performerResponse = await fetch('https://www.iancomposer.com:3002/getPerformers');
     showData = await showResponse.json();
     performerData = await performerResponse.json();
     if (showData.length < 1) {

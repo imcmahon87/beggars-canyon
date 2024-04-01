@@ -44,7 +44,7 @@ function Login() {
         }
     });
 
-    fetch('http://localhost:3002/checkloggedin')
+    fetch('https://www.iancomposer.com:3002/checkloggedin')
         .then(response => response.json())
         .then(response => {
             console.log(response);
@@ -64,13 +64,13 @@ function Login() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username: user.username, password: user.password })
         };
-        fetch('http://localhost:3002/login', requestOptions)
+        fetch('https://www.iancomposer.com:3002/login', requestOptions)
             .then(response => response.json())
             .then((data) => {
                 if (data.status === 'good') {
                     setAuthenticated(true);
                 }
-                fetch('http://localhost:3002/loggedin')
+                fetch('https://www.iancomposer.com:3002/loggedin')
                     .then(data => {
                         console.log(data);
                         loggedIn = true;
@@ -79,7 +79,7 @@ function Login() {
     }
 
     function logout() {
-        fetch('http://localhost:3002/logout')
+        fetch('https://www.iancomposer.com:3002/logout')
             .then(data => {
                 loggedIn = false;
                 setAuthenticated(false);

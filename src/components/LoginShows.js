@@ -11,8 +11,8 @@ async function getShows(callback) {
     performerData = [];
     appendData = [];
     displayData = [];
-    const showResponse = await fetch('http://localhost:3002/getShows');
-    const performerResponse = await fetch('http://localhost:3002/getPerformers');
+    const showResponse = await fetch('https://www.iancomposer.com:3002/getShows');
+    const performerResponse = await fetch('https://www.iancomposer.com:3002/getPerformers');
     showData = await showResponse.json();
     performerData = await performerResponse.json();
     if (showData.length < 1) {
@@ -72,7 +72,7 @@ function LoginShows() {
                                     city: newShow.city, state: newShow.state })
         };
         document.getElementById('showForm').reset();
-        fetch('http://localhost:3002/newshow', requestOptions)
+        fetch('https://www.iancomposer.com:3002/newshow', requestOptions)
             .then(response => response.json())
             .then((data) => {
                 setLoading(true);
@@ -88,7 +88,7 @@ function LoginShows() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id: showId })
             };
-            fetch('http://localhost:3002/deleteperformer', requestOptions)
+            fetch('https://www.iancomposer.com:3002/deleteperformer', requestOptions)
                 .then(response => response.json())
                 .then(data => {
                     const requestOptions = {
@@ -96,7 +96,7 @@ function LoginShows() {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ id: showId })
                     };
-                    fetch('http://localhost:3002/deleteshow', requestOptions)
+                    fetch('https://www.iancomposer.com:3002/deleteshow', requestOptions)
                     .then(response => response.json())
                     .then(data => {
                         setLoading(true);
@@ -109,7 +109,7 @@ function LoginShows() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id: showId })
             };
-            fetch('http://localhost:3002/deleteshow', requestOptions)
+            fetch('https://www.iancomposer.com:3002/deleteshow', requestOptions)
                 .then(response => response.json())
                 .then(data => {
                     setLoading(true);
@@ -126,7 +126,7 @@ function LoginShows() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id: showId, performer: performer })
             };
-            fetch('http://localhost:3002/newperformer', requestOptions)
+            fetch('https://www.iancomposer.com:3002/newperformer', requestOptions)
                 .then(response => response.json())
                 .then(data => {
                     setLoading(true);

@@ -3,7 +3,7 @@ import './animation.css';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { useState } from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import App from './App';
@@ -38,12 +38,12 @@ function Index() {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
 
-  /*setTimeout(() => {
+  setTimeout(() => {
     if (loading === true) {
       setLoading(false);
       onLoaded();
     }
-  }, 6000);*/
+  }, 6000);
 
   // Variables to track loading
   let imageCounter = 0;
@@ -140,5 +140,5 @@ function Index() {
   );
 }
 
-const Root = () => <BrowserRouter basename={'beggarscanyon'}><Index /></BrowserRouter>;
+const Root = () => <HashRouter /*basename={'beggarscanyon'}*/><Index /></HashRouter>;
 render(<Root />, document.getElementById('root'));

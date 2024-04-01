@@ -12,13 +12,13 @@ function Carousel() {
     const [loading, setLoading] = useState(true);
 
     function getCarouselImages() {
-        fetch('http://localhost:3002/getcarouselimages')
+        fetch('https://www.iancomposer.com:3002/getcarouselimages')
             .then(response => response.json())
             .then((data) => {
                 carouselImages = data;
                 console.log('carouselImages');
                 console.log(carouselImages);
-                fetch('http://localhost:3002/getcarouselimageorder')
+                fetch('https://www.iancomposer.com:3002/getcarouselimageorder')
                 .then(response => response.json())
                 .then((data) => {
                     carouselImageOrder = data;
@@ -68,7 +68,7 @@ function Carousel() {
                     sortedCarousel.map((image) => {
                         return (
                             <div key={image.ImageId} className="carouselItem" style={{transform: `translate(-${currentItem * 100}%)`}}>
-                                <img src={'http://localhost:3000/beggarscanyon/carousel/' + image.File}
+                                <img src={'https://www.iancomposer.com/beggarscanyon/carousel/' + image.File}
                                      style={{height: '100%', width: 'auto'}}
                                      alt={image.Description}
                                 />

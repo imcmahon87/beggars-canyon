@@ -9,8 +9,8 @@ let galleryHeight = 0;
 
 async function getImages(callback) {
     console.log('getting images');
-    imageList = await fetch('http://localhost:3002/getimages');
-    imageOrder = await fetch('http://localhost:3002/getimageorder');
+    imageList = await fetch('https://www.iancomposer.com:3002/getimages');
+    imageOrder = await fetch('https://www.iancomposer.com:3002/getimageorder');
     imageOrderArray = await imageOrder.json();
     //if (imageData.length === 0) {
         imageData = await imageList.json();
@@ -48,7 +48,7 @@ function LoginGallery() {
             formData.append('files', files.files[i]);
         }
         console.log(formData);
-        fetch('http://localhost:3002/uploadimage', {
+        fetch('https://www.iancomposer.com:3002/uploadimage', {
             method: 'POST',
             body: formData,
         })
@@ -76,7 +76,7 @@ function LoginGallery() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(imageOrderArray)
             };
-            fetch('http://localhost:3002/updateimageorder', requestOptions)
+            fetch('https://www.iancomposer.com:3002/updateimageorder', requestOptions)
                 .then(response => response.json())
                 .then(data => {
                     setLoading(true);
@@ -103,7 +103,7 @@ function LoginGallery() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(imageOrderArray)
             };
-            fetch('http://localhost:3002/updateimageorder', requestOptions)
+            fetch('https://www.iancomposer.com:3002/updateimageorder', requestOptions)
                 .then(response => response.json())
                 .then(data => {
                     setLoading(true);
@@ -124,7 +124,7 @@ function LoginGallery() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(imageData)
         };
-        fetch('http://localhost:3002/deleteimage', requestOptions)
+        fetch('https://www.iancomposer.com:3002/deleteimage', requestOptions)
             .then(response => response.json())
             .then(data => {
                 setLoading(true);
@@ -145,7 +145,7 @@ function LoginGallery() {
                     sortedImages.map((image) => {
                         return (
                             <div key={image.ImageId} className="loginGalleryImage">
-                                <img src={'http://localhost:3000/beggarscanyon/gallery/' + image.File}
+                                <img src={'https://www.iancomposer.com/beggarscanyon/gallery/' + image.File}
                                      alt={image.Description}
                                 />
                                 <div className="loginGalleryImageBottom">
