@@ -21,34 +21,35 @@ let imageContentTile;
 
 // Load small images for mobile, large images for desktop
 if (windowWidth > 900) {
-  imageBackground = require('./assets/images/background-mobile.png');
+  imageBackground = require('./assets/images/background-desktop.jpg');
   imageHillLeft = require('./assets/images/hill-left-desktop.png');
   imageHillRight = require('./assets/images/hill-right-desktop.png');
   imageTrees = require('./assets/images/foreground-trees-desktop.png');
   imageContentTile = require('./assets/images/foreground-tile-desktop.jpg');
 } else {
-  imageBackground = require('./assets/images/background-mobile.png');
+  imageBackground = require('./assets/images/background-mobile.jpg');
   imageHillLeft = require('./assets/images/hill-left-mobile.png');
   imageHillRight = require('./assets/images/hill-right-mobile.png');
   imageTrees = require('./assets/images/foreground-trees-mobile.png');
-  imageContentTile = require('./assets/images/foreground-tile-mobile.png');
+  imageContentTile = require('./assets/images/foreground-tile-mobile.jpg');
 }
 
 function Index() {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
 
-  setTimeout(() => {
+
+  /*setTimeout(() => {
     if (loading === true) {
       setLoading(false);
       onLoaded();
     }
   }, 6000);
+  */
 
   // Variables to track loading
   let imageCounter = 0;
   let fontCounter = 0;
-
 
   // Preload the header font
   document.fonts.onloadingdone = () => {
@@ -117,9 +118,14 @@ function Index() {
   return (
     <div id="wrapper">
       {loading ? (
-        <div className="loader-container">
-          <ClipLoader color={'#fff'} size={150} />
-        </div>
+        <>
+          <div id="loadingText">
+            <h2>Loading...</h2>
+          </div>
+          <div className="loader-container">
+            <ClipLoader color={'#fff'} size={150} />
+          </div>
+        </>
       ) : (
         <div className="main-content">
           <Header />

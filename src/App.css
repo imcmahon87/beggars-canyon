@@ -65,7 +65,7 @@
     
     .animationContent {
         position: absolute;
-        background-image: url("./assets/images/foreground-tile-mobile.png");
+        background-image: url("./assets/images/foreground-tile-mobile.jpg");
         background-size: 150vw auto;
         background-position: center top;
         top: 25em;

@@ -105,13 +105,16 @@ body {
   text-align: center;
 }
 
+#loadingText {
+  margin: 3em auto 0 auto;
+}
+
 .loader-container {
   position: relative;
   top: 25vh;
 }
 
 #wrapper {
-  background-image: url("assets/images/background-mobile.png");
   background-position: center center;
   background-size: cover;
   height: 100vh;
@@ -196,6 +199,10 @@ body {
     font-size: 1.5em;
   }
 
+  #wrapper {
+    background-image: url("assets/images/background-mobile.jpg");
+  }
+
   #headerMobile {
     display: flex;
   }
@@ -235,6 +242,10 @@ body {
   h1 {
     font-size: 4em;
     line-height: 1em;
+  }
+
+  #wrapper {
+    background-image: url("assets/images/background-desktop.jpg");
   }
 
   #headerMobile {
