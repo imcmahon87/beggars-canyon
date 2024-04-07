@@ -21,6 +21,11 @@
     margin-top: 1em;
 }
 
+#loginError {
+    display: none;
+    color: #6e0000;
+}
+
 #imageForm {
     display: flex;
     flex-direction: column;
@@ -295,7 +300,6 @@
 
     .loginShowDiv {
         width: 100%;
-
     }
 
     .showDivAdmin {

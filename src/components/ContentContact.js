@@ -6,7 +6,7 @@ function ContentContact() {
     const [ sent, setSent ] = useState(false);
 
 
-    /*function sendMessage(e) {
+    function sendMessage(e) {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const submission = {
@@ -24,13 +24,13 @@ function ContentContact() {
                 console.log('success');
             }
         });
-    }*/
+    }
 
     // Substitute function for disabling email sending
-    function sendMessage(e) {
+    /*function sendMessage(e) {
         e.preventDefault();
         setSent(true);
-    }
+    }*/
 
     return (
         <>

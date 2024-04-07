@@ -60,10 +60,12 @@ function Carousel() {
                     sortedCarousel.map((image) => {
                         return (
                             <div key={image.ImageId} className="carouselItem" style={{transform: `translate(-${currentItem * 100}%)`}}>
-                                <img src={'https://www.iancomposer.com/beggarscanyon/carousel/' + image.File}
-                                     style={{height: '100%', width: 'auto'}}
-                                     alt={image.Description}
-                                />
+                                <a href={image.URL} target="_blank" rel="noreferrer" style={{height: '100%', width: 'auto'}}>
+                                    <img src={'https://www.iancomposer.com/beggarscanyon/carousel/' + image.File}
+                                         style={{height: '100%', width: 'auto'}}
+                                         alt={image.Description}
+                                    />
+                                </a>
                             </div>
                         )})
                 ) : <p>Loading</p>

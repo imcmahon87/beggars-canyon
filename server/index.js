@@ -6,7 +6,10 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
-require('dotenv').config({ path: '../.env.local' });
+const bcrypt = require('bcrypt');
+
+// For local:
+// require('dotenv').config({ path: '../.env.local' });
 
 // For production/SSL
 var https = require('https');
@@ -30,8 +33,8 @@ const transporter = nodemailer.createTransport({
     host: 'smtp.dreamhost.com',
     port: 587,
     auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD
+        user: process.env.MAIL_EMAIL,
+        pass: process.env.MAIL_PASSWORD
     }
 });
 
@@ -92,7 +95,7 @@ app.post('/submitmessage', (req, res) => {
     let data = req.body;
     const mail = {
         from: data.name,
-        to: process.env.EMAIL,
+        to: process.env.MAIL_EMAIL,
         subject: 'New Message from BeggarsCanyon.com',
         text: `${data.name} <${data.email}> \n${data.message}`
     };
@@ -149,7 +152,7 @@ app.get('/getimages', (req, res) => {
 });
 
 app.get('/getcarouselimages', (req, res) => {
-    db.query('SELECT ImageId, File, Description \
+    db.query('SELECT ImageId, File, Description, URL \
               FROM Carousel;', (err, result) => {
                 if (err) {
                     console.log(err);
@@ -314,12 +317,14 @@ app.post('/uploadcarousel', uploadCarousel.array('carouselfiles'), (req, res) =>
     //console.log(req.files);
     const description = req.body.carouseldescription;
     const filename = req.files[0].filename;
+    const url = req.body.carouselurl;
     console.log(req.body.carouseldescription);
+    console.log(req.body.carouselurl);
     console.log(req.files[0].filename);
 
     if (description && filename) {
-        db.query('INSERT INTO Carousel (File, Description) \
-                  VALUES (?, ?);', [filename, description], (err, result) => {
+        db.query('INSERT INTO Carousel (File, Description, URL) \
+                  VALUES (?, ?, ?);', [filename, description, url], (err, result) => {
                     if (err) {
                         console.log(err);
                     }
@@ -517,13 +522,19 @@ app.post('/login', (req, res) => {
                         if (result.length > 0) {
                             for (let i = 0; i < result.length; i++) {
                                 console.log(result[i]);
-                                if (result[i].Password === password) {
+                                /*if (result[i].Password === password) {
                                     console.log('user authenticated');
                                     res.send({ status: 'good' });
-                                } else {
-                                    console.log('incorrect password');
-                                    res.send({ status: 'bad' });
-                                }
+                                }*/
+                                bcrypt.compare(password, result[i].Password, function(err, result) {
+                                    if (result === true) {
+                                        console.log('user authenticated');
+                                        res.send({ status: 'good' });
+                                    } else {
+                                        console.log('incorrect password');
+                                        res.send({ status: 'bad' });
+                                    }
+                                });
                             }
                         } else {
                             console.log('incorrect username');

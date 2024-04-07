@@ -40,8 +40,10 @@ function LoginCarousel() {
         e.preventDefault();
         const name = document.getElementById('carouseldescription');
         const files = document.getElementById('carouselfiles');
+        const url = document.getElementById('carouselurl');
         const formData = new FormData();
         formData.append('carouseldescription', name.value);
+        formData.append('carouselurl', url.value);
         for(let i =0; i < files.files.length; i++) {
             formData.append('carouselfiles', files.files[i]);
         }
@@ -122,6 +124,8 @@ function LoginCarousel() {
                 <h3>Add Slide</h3>
                 <label htmlFor="carouseldescription">Carousel Image Description</label>
                 <input type="text" id="carouseldescription" name="carouseldescription" required />
+                <label htmlFor="carouselurl">Carousel URL</label>
+                <input type="text" id="carouselurl" name="carouselurl" required />
                 <input id="carouselfiles" name="carouselfiles" type="file" multiple required />
                 <button type="submit">Upload</button>
             </form>
@@ -133,6 +137,7 @@ function LoginCarousel() {
                                 <img src={'https://www.iancomposer.com/beggarscanyon/carousel/' + image.File}
                                      alt={image.Description}
                                 />
+                                <p>{image.URL}</p>
                                 <div className="loginCarouselImageBottom">
                                     <button onClick={() => {shiftBack(image)}}>-</button>
                                     <button onClick={() => {shiftForward(image)}}>+</button>

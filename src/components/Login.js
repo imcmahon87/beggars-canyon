@@ -9,11 +9,6 @@ let loggedIn = true;
 
 function Login() {
 
-    const [user, setUser] = useState({
-        username: '',
-        password: ''
-    });
-
     const [authenticated, setAuthenticated] = useState(loggedIn);
     const [content, setContent] = useState('shows');
 
@@ -58,16 +53,20 @@ function Login() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        const username = document.getElementById('username');
+        const password = document.getElementById('password');
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: user.username, password: user.password })
+            body: JSON.stringify({ username: username.value, password: password.value })
         };
         fetch('https://www.iancomposer.com:3002/login', requestOptions)
             .then(response => response.json())
             .then((data) => {
                 if (data.status === 'good') {
                     setAuthenticated(true);
+                } else {
+                    document.getElementById('loginError').style.display = 'block';
                 }
                 fetch('https://www.iancomposer.com:3002/loggedin')
                     .then(data => {
@@ -107,9 +106,10 @@ function Login() {
                 ) : <div id="loginWrapper">
                         <form id="loginForm" onSubmit={handleSubmit}>
                             <label htmlFor="username">Username</label>
-                            <input type="text" id="username" onChange={(e) => setUser({...user, username: e.target.value})} />
+                            <input type="text" id="username" required />
                             <label htmlFor="password">Password</label>
-                            <input type="password" id="password" onChange={(e) => setUser({...user, password: e.target.value})}  />
+                            <input type="password" id="password" required />
+                            <p id="loginError">Username or password incorrect, please try again</p>
                             <button type="submit">Submit</button>
                         </form>
                     </div>
