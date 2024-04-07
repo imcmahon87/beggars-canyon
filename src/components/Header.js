@@ -9,10 +9,8 @@ function Header() {
 
     useEffect(() => {
         let acc = document.getElementById('menuButtonMobile');
-        console.log('now clickable');
         acc.addEventListener('click', () => {
             let panel = document.getElementById('menuMobile');
-            console.log(panel);
     
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;

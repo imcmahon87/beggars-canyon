@@ -40,7 +40,6 @@ async function getShows(callback) {
             displayData[i].Other = ''
         }
     }
-    console.log(displayData);
     callback(false);
 }
 
@@ -64,7 +63,6 @@ function LoginShows() {
             city: formData.get('city'),
             state: formData.get('state')
         }
-        console.log(newShow);
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -82,7 +80,6 @@ function LoginShows() {
 
     function deleteShow(showId, other) {
         if (other) {
-            console.log(showId);
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -120,7 +117,6 @@ function LoginShows() {
 
     function addPerformer(showId, performer) {
         if (showId && performer) {
-            console.log(showId, performer);
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

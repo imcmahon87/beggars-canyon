@@ -303,7 +303,7 @@ body {
 
 }
 
-@media only screen and (min-width: 600px) and (max-height: 400px) {
+@media only screen and (min-width: 600px) and (max-height: 500px) {
   #headerDesktop {
     display: flex;
     justify-content: center;
@@ -317,19 +317,25 @@ body {
   
   #headerDesktopMain {
     display: flex;
-    width: fit-content;
+    width: 70%;
     margin: 1em;
   }
   
   #headerDesktopSocial {
-    width: fit-content;
+    width: 30%;
     display: flex;
-    margin: 1em 2em;
+    margin: 1em auto;
+  }
+
+  #headerDesktopSocial a {
+    width: fit-content;
+    margin: 2%;
   }
   
   #headerDesktopSocial img {
     width: 3em;
     height: auto;
+    margin: 0;
   }
 }
 

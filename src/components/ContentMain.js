@@ -102,9 +102,11 @@ function ContentMain() {
                 }
                 { noShows ? <div className="showDiv"><p>There are no shows currently scheduled, but please check back soon!</p></div> : 
                             <></> }
-                <a href="https://flailrecords.com/" target="_blank" rel="noreferrer" >
-                    <img id="flailLogo" src={flailLogo} alt="Flail Logo"/>
-                </a>
+                <div id="flailDiv">
+                    <a href="https://flailrecords.com/" target="_blank" rel="noreferrer" >
+                        <img id="flailLogo" src={flailLogo} alt="Flail Logo"/>
+                    </a>
+                </div>
             </div>
             <Footer />
         </>

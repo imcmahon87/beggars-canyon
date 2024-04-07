@@ -47,7 +47,6 @@ function Login() {
     fetch('https://www.iancomposer.com:3002/checkloggedin')
         .then(response => response.json())
         .then(response => {
-            console.log(response);
             if (response === true) {
                 loggedIn = true;
                 setAuthenticated(true);
@@ -72,7 +71,6 @@ function Login() {
                 }
                 fetch('https://www.iancomposer.com:3002/loggedin')
                     .then(data => {
-                        console.log(data);
                         loggedIn = true;
                     });
             });
@@ -83,7 +81,6 @@ function Login() {
             .then(data => {
                 loggedIn = false;
                 setAuthenticated(false);
-                console.log('logged out');
             });
     }
 

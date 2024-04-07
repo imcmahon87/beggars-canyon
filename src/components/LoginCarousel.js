@@ -22,7 +22,6 @@ async function getCarouselImages(callback) {
             }
         }
     }
-    console.log(carouselSortedImages);
     //setLoading(false);
     callback(false);
 }
@@ -46,13 +45,11 @@ function LoginCarousel() {
         for(let i =0; i < files.files.length; i++) {
             formData.append('carouselfiles', files.files[i]);
         }
-        console.log(formData);
         fetch('https://www.iancomposer.com:3002/uploadcarousel', {
             method: 'POST',
             body: formData,
         })
         .then((res) => {
-            console.log(res);
             setLoading(true);
         })
         .catch((err) => ('Error: ' + err));
@@ -86,8 +83,6 @@ function LoginCarousel() {
             let element = carouselImageOrderArray.order[originalIndex];
             carouselImageOrderArray.order.splice(originalIndex, 1);
             carouselImageOrderArray.order.splice(originalIndex + 1, 0, element);
-
-            console.log(carouselImageOrderArray);
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -109,7 +104,6 @@ function LoginCarousel() {
     function deleteCarouselImage(image) {
         const index = carouselSortedImages.indexOf(image);
         const imageData = carouselSortedImages[index];
-        console.log(imageData);
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

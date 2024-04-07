@@ -39,13 +39,12 @@ function Index() {
   const location = useLocation();
 
 
-  /*setTimeout(() => {
+  setTimeout(() => {
     if (loading === true) {
       setLoading(false);
       onLoaded();
     }
   }, 6000);
-  */
 
   // Variables to track loading
   let imageCounter = 0;
@@ -54,7 +53,6 @@ function Index() {
   // Preload the header font
   document.fonts.onloadingdone = () => {
     fontCounter++;
-    console.log('font loaded: ' + fontCounter);
     if (fontCounter > 0) {
       if (imageCounter >= preloadImages.length) {
         if (loading === true) {
@@ -75,7 +73,6 @@ function Index() {
     image.src = preloadImages[i];
     image.addEventListener('load', () => {
       imageCounter += 1;
-      console.log(imageCounter);
       if (imageCounter >= preloadImages.length) {
         if (fontCounter > 0) {
           if (loading === true) {

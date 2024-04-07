@@ -8,7 +8,6 @@ let sortedImages = [];
 let galleryHeight = 0;
 
 async function getImages(callback) {
-    console.log('getting images');
     imageList = await fetch('https://www.iancomposer.com:3002/getimages');
     imageOrder = await fetch('https://www.iancomposer.com:3002/getimageorder');
     imageOrderArray = await imageOrder.json();
@@ -24,7 +23,6 @@ async function getImages(callback) {
             }
         }
     }
-    console.log(sortedImages);
     callback(false);
 }
 
@@ -47,13 +45,11 @@ function LoginGallery() {
         for(let i =0; i < files.files.length; i++) {
             formData.append('files', files.files[i]);
         }
-        console.log(formData);
         fetch('https://www.iancomposer.com:3002/uploadimage', {
             method: 'POST',
             body: formData,
         })
         .then((res) => {
-            console.log(res);
             //getImages(setLoading);
             setLoading(true);
         })
@@ -118,7 +114,6 @@ function LoginGallery() {
     function deleteImage(image) {
         const index = sortedImages.indexOf(image);
         const imageData = sortedImages[index];
-        console.log(imageData);
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -147,6 +142,7 @@ function LoginGallery() {
                             <div key={image.ImageId} className="loginGalleryImage">
                                 <img src={'https://www.iancomposer.com/beggarscanyon/gallery/' + image.File}
                                      alt={image.Description}
+                                     loading="lazy"
                                 />
                                 <div className="loginGalleryImageBottom">
                                     <button onClick={() => {shiftBack(image)}}>-</button>

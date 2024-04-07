@@ -16,15 +16,10 @@ function Carousel() {
             .then(response => response.json())
             .then((data) => {
                 carouselImages = data;
-                console.log('carouselImages');
-                console.log(carouselImages);
                 fetch('https://www.iancomposer.com:3002/getcarouselimageorder')
                 .then(response => response.json())
                 .then((data) => {
                     carouselImageOrder = data;
-                    console.log('carouselImageOrder:');
-                    console.log(carouselImageOrder);
-
                     sortedCarousel = [];
                     for (let i = 0; i < carouselImageOrder.order.length; i++) {
                         let imageId = carouselImageOrder.order[i];
@@ -34,9 +29,6 @@ function Carousel() {
                             }
                         }
                     }
-                    console.log('sortedCarousel:');
-                    console.log(sortedCarousel);
-
                     carouselItems = [];
                     for (let i = 0; i < sortedCarousel.length; i++) {
                         carouselItems.push(String(i + 1));

@@ -58,6 +58,7 @@ function ContentGallery() {
                                     <img src={'https://www.iancomposer.com/beggarscanyon/gallery/' + image.File} 
                                          onClick={() => {selectImage('https://www.iancomposer.com/beggarscanyon/gallery/' + image.File);}}
                                          alt={image.Description}
+                                         loading="lazy"
                                     />
                                 </div>
                             )
