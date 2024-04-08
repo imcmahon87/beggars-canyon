@@ -12,8 +12,10 @@
 # production
 /build
 
-# database
+# database / certificates
 /server/dbconfig.js
+/server/server.crt
+/server/server.key
 
 # misc
 .DS_Store
